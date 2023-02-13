@@ -1,0 +1,14 @@
+on:
+
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: 
+      - self-hosted
+      - label-1
+    steps;
+      - uses: actions/checkout@v2
+      - name: Run on one-line script
+      run: |
+      echo hello, world
