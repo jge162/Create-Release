@@ -4,23 +4,17 @@ author: Jeremy Escobar
 branding:
   icon: activity
   color: gray-dark
-inputs:
-  input1:
-    description: An input for the action
-    required: true
-outputs:
-  output1:
-    value: ${{ steps.action.outputs.output1 }}
-    description: An output from the action
 runs:
-  using: composite
+  using: "composite"
   steps:
+    - name: Check out code
+      uses: actions/checkout@v2
     - name: Python Action
       runs-on: self-hosted
-      shell: pwsh
+      shell: bash
       uses: jge162/Action-workflows@v0.0.6
     - name: Run Action
       runs-on: self-hosted
-      shell: pwsh
+      shell: bash
       run: |
         echo "Hello, world!"
