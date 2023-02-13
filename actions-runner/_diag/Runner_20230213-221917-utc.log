@@ -1,0 +1,61 @@
+[2023-02-13 22:19:17Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Bin': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/bin'
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Root': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner'
+[2023-02-13 22:19:17Z INFO HostContext] Well known config file 'Credentials': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/.credentials'
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Bin': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/bin'
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Root': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner'
+[2023-02-13 22:19:17Z INFO HostContext] Well known config file 'Runner': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/.runner'
+[2023-02-13 22:19:17Z INFO Listener] Runner is built for OSX (X64) - osx-x64.
+[2023-02-13 22:19:17Z INFO Listener] RuntimeInformation: Darwin 22.3.0 Darwin Kernel Version 22.3.0: Thu Jan  5 20:49:43 PST 2023; root:xnu-8792.81.2~2/RELEASE_ARM64_T8103.
+[2023-02-13 22:19:17Z INFO Listener] Version: 2.301.1
+[2023-02-13 22:19:17Z INFO Listener] Commit: f764f5dfa75a74600ef491599be8d4fea33ccdaf
+[2023-02-13 22:19:17Z INFO Listener] Culture: 
+[2023-02-13 22:19:17Z INFO Listener] UI Culture: 
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Bin': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/bin'
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Root': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner'
+[2023-02-13 22:19:17Z INFO Listener] Validating directory permissions for: '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner'
+[2023-02-13 22:19:17Z INFO CommandLineParser] Parse
+[2023-02-13 22:19:17Z INFO CommandLineParser] Parsing 1 args
+[2023-02-13 22:19:17Z INFO CommandLineParser] parsing argument
+[2023-02-13 22:19:17Z INFO CommandLineParser] HasArgs: False
+[2023-02-13 22:19:17Z INFO CommandLineParser] Adding Command: run
+[2023-02-13 22:19:17Z INFO Listener] Arguments parsed
+[2023-02-13 22:19:17Z INFO Runner] ExecuteCommand
+[2023-02-13 22:19:17Z INFO ConfigurationStore] currentAssemblyLocation: /Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/bin/Runner.Listener.dll
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Bin': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/bin'
+[2023-02-13 22:19:17Z INFO ConfigurationStore] binPath: /Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/bin
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Bin': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/bin'
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Root': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner'
+[2023-02-13 22:19:17Z INFO ConfigurationStore] RootFolder: /Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Bin': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/bin'
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Root': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner'
+[2023-02-13 22:19:17Z INFO HostContext] Well known config file 'Runner': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/.runner'
+[2023-02-13 22:19:17Z INFO ConfigurationStore] ConfigFilePath: /Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/.runner
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Bin': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/bin'
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Root': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner'
+[2023-02-13 22:19:17Z INFO HostContext] Well known config file 'Credentials': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/.credentials'
+[2023-02-13 22:19:17Z INFO ConfigurationStore] CredFilePath: /Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/.credentials
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Bin': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/bin'
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Root': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner'
+[2023-02-13 22:19:17Z INFO HostContext] Well known config file 'MigratedCredentials': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/.credentials_migrated'
+[2023-02-13 22:19:17Z INFO ConfigurationStore] MigratedCredFilePath: /Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/.credentials_migrated
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Bin': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/bin'
+[2023-02-13 22:19:17Z INFO HostContext] Well known directory 'Root': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner'
+[2023-02-13 22:19:17Z INFO HostContext] Well known config file 'Service': '/Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/.service'
+[2023-02-13 22:19:17Z INFO ConfigurationStore] ServiceConfigFilePath: /Users/csuftitan/Dropbox (CSU Fullerton)/Mac/Documents/GitHub/create-release/actions-runner/.service
+[2023-02-13 22:19:17Z INFO CommandSettings] Flag 'help': 'False'
+[2023-02-13 22:19:17Z INFO CommandSettings] Flag 'version': 'False'
+[2023-02-13 22:19:17Z INFO CommandSettings] Flag 'commit': 'False'
+[2023-02-13 22:19:17Z INFO CommandSettings] Flag 'check': 'False'
+[2023-02-13 22:19:17Z INFO CommandSettings] Command 'configure': 'False'
+[2023-02-13 22:19:17Z INFO CommandSettings] Command 'remove': 'False'
+[2023-02-13 22:19:17Z INFO CommandSettings] Command 'warmup': 'False'
+[2023-02-13 22:19:17Z INFO ConfigurationManager] LoadSettings
+[2023-02-13 22:19:17Z INFO ConfigurationStore] IsConfigured()
+[2023-02-13 22:19:17Z INFO ConfigurationStore] IsConfigured: False
+[2023-02-13 22:19:17Z INFO ConfigurationManager] Is configured: False
+[2023-02-13 22:19:17Z ERR  Terminal] WRITE ERROR: An error occurred: Not configured. Run config.(sh/cmd) to configure the runner.
+[2023-02-13 22:19:17Z ERR  Listener] GitHub.Runner.Common.NonRetryableException: Not configured. Run config.(sh/cmd) to configure the runner.
+   at GitHub.Runner.Listener.Configuration.ConfigurationManager.LoadSettings()
+   at GitHub.Runner.Listener.Runner.ExecuteCommand(CommandSettings command)
+   at GitHub.Runner.Listener.Program.MainAsync(IHostContext context, String[] args)
