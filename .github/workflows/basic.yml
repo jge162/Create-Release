@@ -7,6 +7,7 @@ jobs:
     runs-on: 
       - self-hosted
       - label-1
+      - actions-runner
     steps:
       - uses: actions/checkout@v2
       - name: Run on one-line script
