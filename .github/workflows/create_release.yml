@@ -41,3 +41,5 @@ jobs:
             This is the release notes for ${{ steps.bump_version.outputs.new_tag }}
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
+          WORKFLOW_SECRET: ${{ secrets.WORKFLOW_SECRET }}
+
