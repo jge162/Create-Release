@@ -6,6 +6,12 @@ Create a new release when a Pull Request is closed (with certain conditions)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jge162/create-release?logo=github&style=for-the-badge)
 ![GitHub Repo stars](https://img.shields.io/github/stars/jge162/create-release?color=red&logo=github&style=for-the-badge)
 
+# Release Action:
+
+Conditions of this release to run are a pull request must be closed and merged. 
+Next you must be the repo owner and have a pull request label called `create release` chosen. 
+This ensures not tags are created unnecessary. 
+
 
 ```yaml
 name: Release on Pull Request Close
