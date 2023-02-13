@@ -10,11 +10,15 @@ runs:
     - name: Check out code
       uses: actions/checkout@v2
     - name: Python Action
-      runs-on: self-hosted
+      runs-on: 
+        - self-hosted
+        - label-1
       shell: bash
       uses: jge162/Action-workflows@v0.0.6
     - name: Run Action
-      runs-on: self-hosted
-      shell: bash
+      runs-on: 
+        - self-hosted
+        - label-1     
+        shell: bash
       run: |
         echo "Hello, world!"
