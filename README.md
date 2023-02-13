@@ -1,4 +1,5 @@
-# create-release
+# Create-release upon closing a pull request (with conditions)
+
 Create a new release when a Pull Request is closed (with certain conditions)
 
 ```yaml
