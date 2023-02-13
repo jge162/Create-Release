@@ -1,5 +1,5 @@
-name: Python Action
-description: Quickly run your Python code and verify it is error-free
+name: create-release
+description: Create Release upon Close Pull Request
 author: Jeremy Escobar
 branding:
   icon: activity
@@ -14,7 +14,7 @@ runs:
         - self-hosted
         - label-1
       shell: bash
-      uses: jge162/Action-workflows@v0.0.6
+      uses: jge162/create-release@v0.0.6
     - name: Run Action
       runs-on: 
         - self-hosted
