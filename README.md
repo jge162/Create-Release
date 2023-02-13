@@ -50,3 +50,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```          
+
+# License info:
+
+jge162/create-release is licensed under the MIT License
