@@ -2,7 +2,7 @@
 
 Create a new release when a Pull Request is closed (with certain conditions)
 
-![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/jge162/create-release/dependabot.yml?branch=main&style=for-the-badge)
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/jge162/create-release/.github/dependabot.yml?branch=main&style=for-the-badge)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jge162/create-release?logo=github&style=for-the-badge)
 ![GitHub Repo stars](https://img.shields.io/github/stars/jge162/create-release?color=red&logo=github&style=for-the-badge)
 
