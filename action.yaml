@@ -16,7 +16,7 @@ runs:
   using: composite
   steps:
     - name: Python Action
-      run: self-hosted
+      runs-on: self-hosted
       shell: bash
       uses: jge162/Action-workflows@v0.0.6
     - name: Run Action
