@@ -2,6 +2,8 @@ name: "My GitHub Action"
 description: "An example GitHub Action"
 author: "Jeremy Escobar"
 inputs:
+icon: "arrow-right-circle"
+color: "gray-dark"
   input1:
     description: "An input for the action"
     required: true
