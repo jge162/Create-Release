@@ -1,17 +1,26 @@
-name: "Create Release upon Close Pull Request"
-description: "Streamline releases based on certain conditions"
-author: "Jeremy Escobar"
+name: Python Action
+description: Quickly run your Python code and verify it is error-free
+author: Jeremy Escobar
+branding:
+  icon: activity
+  color: gray-dark
 inputs:
   input1:
-    description: "An input for the action"
+    description: An input for the action
     required: true
 outputs:
   output1:
-    description: "An output from the action"
+    value: ${{ steps.action.outputs.output1 }}
+    description: An output from the action
 runs:
+  using: composite
   steps:
-    - name: "Checkout"
-      uses: actions/checkout@v3
-    - name: "Run Action"
+    - name: Python Action
+      run: self-hosted
+      shell: bash
+      uses: jge162/Action-workflows@v0.0.6
+    - name: Run Action
+      runs-on: self-hosted
+      shell: bash
       run: |
         echo "Hello, world!"
