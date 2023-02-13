@@ -14,7 +14,7 @@ runs:
         - self-hosted
         - label-1
       shell: bash
-      uses: jge162/create-release@v0.0.6
+      uses: jge162/create-release@v1.0.4
     - name: Run Action
       runs-on: 
         - self-hosted
