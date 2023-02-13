@@ -7,8 +7,8 @@ jobs:
     runs-on: 
       - self-hosted
       - label-1
-    steps;
+    steps:
       - uses: actions/checkout@v2
       - name: Run on one-line script
-      run: |
-      echo hello, world
+        run: |
+          echo hello, world
