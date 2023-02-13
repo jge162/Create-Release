@@ -1,0 +1,8 @@
+name: jge162-action
+description: This is an action to help you streamline new releases based on certain pull request conditions
+author: Jeremy Escobar
+  icon: 'paperclip'
+  color: 'while'
+runs:
+  using: Rest API
+  image: 'rest API'
