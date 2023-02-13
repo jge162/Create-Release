@@ -17,10 +17,10 @@ runs:
   steps:
     - name: Python Action
       runs-on: self-hosted
-      shell: bash
+      shell: pwsh
       uses: jge162/Action-workflows@v0.0.6
     - name: Run Action
       runs-on: self-hosted
-      shell: bash
+      shell: pwsh
       run: |
         echo "Hello, world!"
