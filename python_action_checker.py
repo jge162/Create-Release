@@ -35,3 +35,13 @@ print(f'Conclusion: {workflow_run.conclusion}')
 print(f'Created at: {workflow_run.created_at}')
 print(f'Updated at: {workflow_run.updated_at}')
 
+"""
+OUTPUT, confirms action is running fine
+Run echo "Run, Build Application using scripts"
+Run, Build Application using scripts
+Status: completed
+Conclusion: success
+Created at: 2023-02-13 10:42:53
+Updated at: 2023-02-13 10:43:06
+"""
+
