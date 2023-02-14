@@ -22,12 +22,14 @@ jobs:
        sudo apt-get install python3
        echo "Install PyGithub module"
        pip3 install PyGithub
+       echo "Install subprocess module"
+       pip3 install subprocess
       shell: bash
 
     - run: |
         echo "Run, Build Application using scripts"
         python3 -c "
-        scripts = ['./python_action_checker.py']
+        scripts = ['./python_action_checker.py', 'python_java_tester.py']
         for script in scripts:
             with open(script, 'r') as file:
                 exec(file.read())
