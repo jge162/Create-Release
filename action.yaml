@@ -1,71 +1,59 @@
 name: create-release-on-close
-
 description: Creates a new GitHub release when a pull request is closed
-
 author: Jeremy Escobar
-
 branding:
   icon: activity
   color: gray-dark
-
 inputs:
-  release-notes:
-    description: "Notes to include in the release body"
+  body:
+    description: "Note-worthy description of changes in release"
     required: false
-  release-notes-path:
-    description: "Path to a file containing notes to include in the release body"
+  files:
+    description: "Newline-delimited list of path globs for asset files to upload"
     required: false
-  release-name:
-    description: "A custom name for the release. Defaults to the tag name"
+  name:
+    description: "Gives the release a custom name. Defaults to tag name"
     required: false
-  tag-name:
-    description: "The tag name to use for the release. Defaults to the GitHub reference"
+  tag_name:
+    description: "Gives a tag name. Defaults to github.GITHUB_REF"
     required: false
-  is-draft:
-    description: "Whether to create a draft release. Defaults to false"
+  draft:
+    description: "Creates a draft release. Defaults to false"
     required: false
-  is-prerelease:
-    description: "Whether to mark the release as a prerelease. Defaults to false"
-    required: false
-  asset-files:
-    description: "A newline-delimited list of path globs for asset files to include in the release"
-    required: false
-  fail-on-unmatched-files:
-    description: "Whether to fail if any of the asset files globs match nothing. Defaults to false"
+  prerelease:
+    description: "Identify the release as a prerelease. Defaults to false"
     required: false
   repository:
-    description: "The repository in <owner>/<repo> format to make the release against"
+    description: "Repository to make releases against, in <owner>/<repo> format"
     required: false
-  github-token:
-    description: "A GitHub Personal Access Token with authorization to create releases"
+  token:
+    description: "Authorized secret GitHub Personal Access Token. Defaults to github.token"
     required: false
     default: ${{ github.WORKFLOW_SECRET }}
-  commitish:
-    description: "The commit or branch to use as the base for the release"
+  target_commitish:
+    description: "Commitish value that determines where the Git tag is created from. Can be any branch or commit SHA."
     required: false
-  discussion-category:
-    description: "The name of a discussion category to create and link to the release"
+  discussion_category_name:
+    description: "If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored."
     required: false
-  generate-release-notes:
-    description: "Whether to automatically generate release notes"
+  generate_release_notes:
+    description: "Whether to automatically generate the name and body for this release. If name is specified, the specified name will be used; otherwise, a name will be automatically generated. If body is specified, the body will be pre-pended to the automatically generated notes."
     required: false
-  append-release-notes:
-    description: "Whether to append release notes to an existing release body. Defaults to false."
+  append_body:
+    description: "Append to existing body instead of overwriting it. Default is false."
     required: false
-
 env:
-  GITHUB_TOKEN: "The GitHub Actions token provided by GitHub"
-
+  GITHUB_TOKEN:
+    description: "The GitHub token used to create the release"
 outputs:
-  release-url:
-    description: "The URL to the release page on GitHub"
-  release-id:
-    description: "The ID of the newly created release"
-  upload-url:
-    description: "The URL to use for uploading assets to the release"
+  url:
+    description: "URL to the Release HTML Page"
+  id:
+    description: "Release ID"
+  upload_url:
+    description: "URL for uploading assets to the release"
   assets:
-    description: "A JSON array containing information about each uploaded asset"
-
+    description: "JSON array containing information about each uploaded asset, in the format given [here](https://docs.github.com/en/rest/reference/repos#upload-a-release-asset--code-samples) (minus the `uploader` field)"
 runs:
   using: "node16"
   main: "dist/index.js"
