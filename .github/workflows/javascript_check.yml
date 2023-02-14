@@ -1,4 +1,4 @@
-name: Python Action
+name: Javascript Action error checker 
 on:
   push:
     branches:
