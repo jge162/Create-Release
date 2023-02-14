@@ -25,7 +25,7 @@ jobs:
 
     - name: Script Error Results Here!
       run: |
-        echo "Run, Build Application using scripts"
+        echo "Build application script outputs Here!"
         python3 -c "
         scripts = ['python_java_tester.py']
         for script in scripts:
