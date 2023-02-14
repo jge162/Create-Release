@@ -22,10 +22,10 @@ on:
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'create release') && github.event.pull_request.user.login == 'GitHub_username_here'
+    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'create release') && github.event.pull_request.user.login == 'jge162'
     steps:
       - name: Checkout code
-        uses: jge162/Action-workflows@main
+        uses: actions/checkout@v2
       - name: Build and test code
         run: |
           # Build and test code here
@@ -51,9 +51,9 @@ jobs:
             build/*
           tag_name: ${{ steps.bump_version.outputs.new_tag }}
           body: |
-            This is the release notes for ${{ steps.bump_version.outputs.new_tag }}
+            Release has been successfully created with GitHub Action, release: ${{ steps.bump_version.outputs.new_tag }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
 ```          
 
 # License info:
