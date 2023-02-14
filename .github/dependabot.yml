@@ -14,7 +14,7 @@ updates:
     schedule:
       interval: "daily"
     allow:
-      - type: "direct"
+      - dependency-type: "direct"
     ignore:
       - dependency-name: "index.js"
 
