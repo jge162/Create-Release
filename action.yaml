@@ -8,65 +8,60 @@ branding:
   icon: activity
   color: gray-dark
 inputs:
-  # message:
-  # description: 'Message to prospective contributor'
-  #  required: false
-  #  default: ''
-  #issueCurrentlyAssignedMessage:
-  #  description: 'Message to contributors if issue is already assigned'
-  #  required: false
-  #  default: 'The issue you are trying to assign to yourself is already assigned.'
-  #trigger:
-  #  description: 'The string that triggers the action'
-  #  required: false
-  #  default: '.take'
-  #token:
-  #  description: 'The GitHub PAT used to authenticate when updating the Issue'
-  #  required: true
-  tag_name:
-    description: 'The name of the tag to be created'
-    required: true
   body:
-    description: 'The comment body to post'
+    description: "Note-worthy description of changes in release"
     required: false
-    default: ''
+  body_path:
+    description: "Path to load note-worthy description of changes in release from"
+    required: false
+  name:
+    description: "Gives the release a custom name. Defaults to tag name"
+    required: false
+  tag_name:
+    description: "Gives a tag name. Defaults to github.GITHUB_REF"
+    required: false
+  draft:
+    description: "Creates a draft release. Defaults to false"
+    required: false
+  prerelease:
+    description: "Identify the release as a prerelease. Defaults to false"
+    required: false
   files:
-    description: 'Files to include in the release (as a newline-separated list of globs)'
+    description: "Newline-delimited list of path globs for asset files to upload"
     required: false
-    default: ''
-
+  fail_on_unmatched_files:
+    description: "Fails if any of the `files` globs match nothing. Defaults to false"
+    required: false
+  repository:
+    description: "Repository to make releases against, in <owner>/<repo> format"
+    required: false
+  token:
+    description: "Authorized secret GitHub Personal Access Token. Defaults to github.token"
+    required: false
+    default: ${{ github.WORKFLOW_SECRET }}
+  target_commitish:
+    description: "Commitish value that determines where the Git tag is created from. Can be any branch or commit SHA."
+    required: false
+  discussion_category_name:
+    description: "If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored."
+    required: false
+  generate_release_notes:
+    description: "Whether to automatically generate the name and body for this release. If name is specified, the specified name will be used; otherwise, a name will be automatically generated. If body is specified, the body will be pre-pended to the automatically generated notes."
+    required: false
+  append_body:
+    description: "Append to existing body instead of overwriting it. Default is false."
+    required: false
+env:
+  "GITHUB_TOKEN": "As provided by Github Actions"
+outputs:
+  url:
+    description: "URL to the Release HTML Page"
+  id:
+    description: "Release ID"
+  upload_url:
+    description: "URL for uploading assets to the release"
+  assets:
+    description: "JSON array containing information about each uploaded asset, in the format given [here](https://docs.github.com/en/rest/reference/repos#upload-a-release-asset--code-samples) (minus the `uploader` field)"
 runs:
-  using: "composite"
-  steps:
-    - run: |
-        BODY="$(jq '.comment.body' $GITHUB_EVENT_PATH)"
-        ISSUE_NUMBER="$(jq '.issue.number' $GITHUB_EVENT_PATH)"
-        LOGIN="$(jq '.comment.user.login' $GITHUB_EVENT_PATH | tr -d \")"
-        REPO="$(jq '.repository.full_name' $GITHUB_EVENT_PATH | tr -d \")"
-        ISSUE_JSON="$(jq '.issue' $GITHUB_EVENT_PATH)"
-        ISSUE_CURRENTLY_ASSIGNED=`echo $ISSUE_JSON | jq '.assignees | length == 0'`
-
-        if [[ $BODY == *"$INPUT_tag_name"* ]]; then
-          if [[ "$ISSUE_CURRENTLY_ASSIGNED" == false ]]; then
-            echo "Is issue currently assigned: $ISSUE_CURRENTLY_ASSIGNED"
-            echo "Assigning issue $ISSUE_NUMBER to $LOGIN"
-            echo "Using the link: https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/assignees"
-            curl -H "Authorization: bearer $GITHUB_PAT" -d '{"assignees":["'"$LOGIN"'"]}' https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/assignees
-            if [[ ! -z $INPUT_MESSAGE ]]; then
-              jq -n -r --arg body "$INPUT_MESSAGE" '{body: $body}' > payload.json
-              curl -X POST -H "Authorization: bearer $GITHUB_PAT" --data @payload.json https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/comments
-            fi
-          else
-            echo "This issue is currently assigned to a different user"
-            if [[ ! -z $ISSUE_CURRENTLY_ASSIGNED_MESSAGE ]]; then
-            jq -n -r --arg body "$ISSUE_CURRENTLY_ASSIGNED_MESSAGE" '{body: $body}' > payload.json
-            curl -X POST -H "Authorization: bearer $GITHUB_PAT" --data @payload.json https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/comments
-            fi
-          fi
-        fi
-      shell: bash
-      env:
-        INPUT_MESSAGE: "${{ inputs.message }}"
-        INPUT_tag_name: "${{ inputs.tag_name }}"
-        ISSUE_CURRENTLY_ASSIGNED_MESSAGE: "${{ inputs.issueCurrentlyAssignedMessage }}"
-        GITHUB_PAT: "${{ inputs.WORKFLOW_SECRET }}"
+  using: "node16"
+  main: "dist/index.js"
