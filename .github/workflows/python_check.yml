@@ -22,8 +22,6 @@ jobs:
        sudo apt-get install python3
        echo "Install PyGithub module"
        pip3 install PyGithub
-       echo "Install subprocess module"
-       pip3 install subprocess
       shell: bash
 
     - run: |
