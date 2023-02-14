@@ -13,7 +13,7 @@ payload = {
 
 headers = {
     "Accept": "application/vnd.github.v3+json",
-    "Authorization": "Bearer WORKFLOW_SECRET",
+    "Authorization": "WORKFLOW_SECRET",
     "Content-Type": "application/json"
 }
 
