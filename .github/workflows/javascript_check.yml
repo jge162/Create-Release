@@ -23,9 +23,6 @@ jobs:
     - name: Install jshint
       run: npm install -g jshint
 
-    - name: Install PyGithub module
-      run: pip3 install PyGithub
-
     - name: Run script
       run: |
         echo "Run, Build Application using scripts"
