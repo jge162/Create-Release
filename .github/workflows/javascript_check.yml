@@ -23,7 +23,7 @@ jobs:
     - name: Install jshint
       run: npm install -g jshint
 
-    - name: Run script
+    - name: Script Error Results Here!
       run: |
         echo "Run, Build Application using scripts"
         python3 -c "
