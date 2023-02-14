@@ -11,6 +11,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
       with:
-        merge-method: 'merge' # Default 'squash'
+        merge-method: 'merge' # Pull request merge method: "merge", "squash", "rebase". Default is "squash".
         min-approvals: 0 # Default 2
         base-ref: 'main' # Default 'dev'
