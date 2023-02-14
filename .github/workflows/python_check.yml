@@ -25,7 +25,7 @@ jobs:
       shell: bash
 
     - run: |
-        echo "Run, Build Application using scripts"
+        echo "Build application script outputs Here!"
         python3 -c "
         scripts = [ 'foo.py']
         for script in scripts:
