@@ -1,25 +1,37 @@
-import requests
-import json
+from github import Github
+import os
 
-url = "https://api.github.com/repos/jge162/create-release/actions/workflows/create_release.yml/dispatches"
+# Replace with your GitHub personal access token
+TOKEN = os.getenv('WORKFLOW_SECRET')
 
-payload = {
-    "ref": "main",
-    "inputs": {
-        "input1": "<value1>",
-        "input2": "<value2>"
-    }
-}
+# Replace with the repository owner and name
+REPO_OWNER = 'jge162'
+REPO_NAME = 'create-release'
 
-headers = {
-    "Accept": "application/vnd.github.v3+json",
-    "Authorization": "Bearer WORKFLOW_SECRET",
-    "Content-Type": "application/json"
-}
+# Replace with the workflow ID
+WORKFLOW_ID = 'create-release.yml'
 
-response = requests.post(url, headers=headers, data=json.dumps(payload))
+# Replace with the name of the action you want to check
+ACTION_NAME = 'jge162/create-release@main'
 
-if response.status_code == 204:
-    print("Workflow dispatched successfully!")
-else:
-    print(f"Error dispatching workflow: {response.status_code}")
+g = Github(TOKEN)
+repo = g.get_repo(f'{REPO_OWNER}/{REPO_NAME}')
+
+workflow_runs = repo.get_workflow_runs()
+
+# Check the most recent workflow run with the given ID and name
+for workflow_run in workflow_runs:
+    if workflow_run.id == WORKFLOW_ID and workflow_run.name == ACTION_NAME:
+        # Check if the workflow run has completed and was successful
+        if workflow_run.status == 'completed' and workflow_run.conclusion == 'success':
+            print('Workflow run succeeded')
+        else:
+            print('Workflow run failed')
+        break
+
+
+print(f'Status: {workflow_run.status}')
+print(f'Conclusion: {workflow_run.conclusion}')
+print(f'Created at: {workflow_run.created_at}')
+print(f'Updated at: {workflow_run.updated_at}')
+
