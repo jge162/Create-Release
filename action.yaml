@@ -46,7 +46,7 @@ runs:
         ISSUE_JSON="$(jq '.issue' $GITHUB_EVENT_PATH)"
         ISSUE_CURRENTLY_ASSIGNED=`echo $ISSUE_JSON | jq '.assignees | length == 0'`
 
-        if [[ $BODY == *"$INPUT_TRIGGER"* ]]; then
+        if [[ $BODY == *"$INPUT_tag_name"* ]]; then
           if [[ "$ISSUE_CURRENTLY_ASSIGNED" == false ]]; then
             echo "Is issue currently assigned: $ISSUE_CURRENTLY_ASSIGNED"
             echo "Assigning issue $ISSUE_NUMBER to $LOGIN"
@@ -67,6 +67,6 @@ runs:
       shell: bash
       env:
         INPUT_MESSAGE: "${{ inputs.message }}"
-        INPUT_TRIGGER: "${{ inputs.trigger }}"
+        INPUT_tag_name: "${{ inputs.tag_name }}"
         ISSUE_CURRENTLY_ASSIGNED_MESSAGE: "${{ inputs.issueCurrentlyAssignedMessage }}"
         GITHUB_PAT: "${{ inputs.WORKFLOW_SECRET }}"
