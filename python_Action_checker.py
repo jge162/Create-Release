@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = "https://api.github.com/repos/jge162/create-release/actions/workflows/jge162/create-release@main/dispatches"
+url = "https://github.com/jge162/create-release/actions/workflows/create_release.yml"
 
 payload = {
     "ref": "main",
