@@ -25,7 +25,7 @@ jobs:
     if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'create release') && github.event.pull_request.user.login == 'GitHub_username_here'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: jge162/Action-workflows@main
       - name: Build and test code
         run: |
           # Build and test code here
@@ -45,7 +45,7 @@ jobs:
           echo "::set-output name=new_tag::$new_tag"
         id: bump_version
       - name: Create release
-        uses: softprops/action-gh-release@v1
+        uses: jge162/create-release@main
         with:
           files: |
             build/*
