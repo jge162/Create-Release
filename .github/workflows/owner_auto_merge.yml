@@ -1,22 +1,16 @@
-name: Update cms/master
+name: PRs auto merge
 
 on:
-  push:
-    branches:
-      - master
+  pull_request:
 
 jobs:
-  update-cms-master:
-    name: Merge master into release after a PR is merged
+  pr-automerge:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
-      - name: merge
-        uses: mtanzi/action-automerge@v1
-        id: merge
-        with:
-          github_token: ${{ secrets.WORKFLOW_SECRET }}
-          source: 'jge162-patch-1'
-          target: 'main'
-          webhook_url: #if present add the Slack webhook
+    - uses: davideviolante/pr-automerge-action@v1.3.3
+      env:
+        GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
+      with:
+        merge-method: 'squash' # Default 'squash'
+        min-approvals: 0 # Default 2
+        base-ref: 'main' # Default 'dev'
