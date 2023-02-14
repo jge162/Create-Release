@@ -4,7 +4,7 @@ Create a new release when a Pull Request is closed (with certain conditions).
 
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/jge162/Action-Workflows/create_release.yml?style=for-the-badge)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jge162/create-release?logo=github&style=for-the-badge)
-![GitHub Repo stars](https://img.shields.io/github/stars/jge162/create-release?color=red&logo=github&style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/jge162/create-release)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/jge162/Action-workflows)
 [![Release on Pull Request Close](https://github.com/jge162/create-release/actions/workflows/create_release.yml/badge.svg)](https://github.com/jge162/create-release/actions/workflows/create_release.yml)
 
