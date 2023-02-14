@@ -27,8 +27,9 @@ jobs:
     - run: |
         echo "Run, Build Application using scripts"
         python3 -c "
-        scripts = ['./python_action_checker.py', 'python_java_tester.py']
+        scripts = ['python_java_tester.py']
         for script in scripts:
             with open(script, 'r') as file:
                 exec(file.read())
         "
+    # ./python_action_checker.py' limited API calls, so not leaving in call
