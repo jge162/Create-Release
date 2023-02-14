@@ -1,0 +1,22 @@
+name: Update cms/master
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  update-cms-master:
+    name: Merge master into release after a PR is merged
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: merge
+        uses: mtanzi/action-automerge@v1
+        id: merge
+        with:
+          github_token: ${{ secrets.WORKFLOW_SECRET }}
+          source: 'jge162-patch-1'
+          target: 'main'
+          webhook_url: #if present add the Slack webhook
