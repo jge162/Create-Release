@@ -1,4 +1,3 @@
-# run file to verify it compiles with no errors 
 name: Python Action
 on:
   push:
@@ -14,17 +13,21 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: jge162/Action-workflows@main
+      uses: actions/checkout@v2
 
-    - run: |
-       echo "Install required dependencies"
-       sudo apt-get update
-       sudo apt-get install python3
-       echo "Install PyGithub module"
-       pip3 install PyGithub
-      shell: bash
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
 
-    - run: |
+    - name: Install jshint
+      run: npm install -g jshint
+
+    - name: Install PyGithub module
+      run: pip3 install PyGithub
+
+    - name: Run script
+      run: |
         echo "Run, Build Application using scripts"
         python3 -c "
         scripts = ['python_java_tester.py']
@@ -32,4 +35,3 @@ jobs:
             with open(script, 'r') as file:
                 exec(file.read())
         "
-    # ./python_action_checker.py' limited API calls, so not leaving in call
