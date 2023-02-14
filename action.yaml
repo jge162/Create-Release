@@ -1,4 +1,4 @@
-name: Create-release
+name: create-release-pr
 description: Create Release upon Close Pull Request
 author: Jeremy Escobar
 branding:
