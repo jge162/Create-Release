@@ -27,6 +27,10 @@ inputs:
     description: 'The comment body to post'
     required: false
     default: ''
+  files:
+    description: 'Files to include in the release (as a newline-separated list of globs)'
+    required: false
+    default: ''
 
 runs:
   using: "composite"
