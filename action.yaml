@@ -20,6 +20,13 @@ inputs:
   token:
     description: 'The GitHub PAT used to authenticate when updating the Issue'
     required: true
+  tag_name:
+    description: 'The name of the tag to be created'
+    required: true
+  body:
+    description: 'The comment body to post'
+    required: false
+    default: ''
 
 runs:
   using: "composite"
