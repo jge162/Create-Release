@@ -9,3 +9,12 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    allow:
+      - type: "direct"
+    ignore:
+      - dependency-name: "index.js"
+
