@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = "https://github.com/jge162/create-release/actions/workflows/create_release.yml"
+url = "https://api.github.com/repos/jge162/create-release/actions/workflows/create_release.yml/dispatches"
 
 payload = {
     "ref": "main",
@@ -10,6 +10,7 @@ payload = {
         "input2": "<value2>"
     }
 }
+
 headers = {
     "Accept": "application/vnd.github.v3+json",
     "Authorization": "Bearer WORKFLOW_SECRET",
