@@ -36,6 +36,6 @@ jobs:
             build/*
           tag_name: ${{ steps.bump_version.outputs.new_tag }}
           body: |
-            This is the release notes for ${{ steps.bump_version.outputs.new_tag }}
+            Release has been successfully created with GitHub Action, release: ${{ steps.bump_version.outputs.new_tag }}
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
