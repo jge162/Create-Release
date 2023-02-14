@@ -1,6 +1,3 @@
-
-
-
 name: create-release
 description: Create Release upon Close Pull Request
 author: Jeremy Escobar
