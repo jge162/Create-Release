@@ -58,11 +58,26 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
 ```          
 
-# Release of Major version supported now. In versions v1.0.0
+# Release of **Major** version push supported in update -> `v1.0.0`
 
-In this code snipper below, you will be able to push a major releae update from for example bump
-from v0.0.0 to v1.0.0 onwards per major release only incrementing major v1.0.0 to v2.0.0 and v3.0.0.
+In this code snippet below, you will be able to push a major releae update, for example bump
+from v0.0.0 to v1.0.0 onwards per major release created only incrementing major v1.0.0 to v2.0.0 and v3.0.0.
 
+You must create a Label called 'create release major' and GitHub user == to <owner> as conditions for release.
+See example below: 
+
+```yaml
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true &&
+    contains(github.event.pull_request.labels.*.name, 'create release major') &&
+    github.event.pull_request.user.login == 'jge162'
+    steps:
+```
+
+Here you can see how the Major bump occurs and does not affect, minor or patch versions.
+  
 ```yaml
  - name: Bump major version
         run: |
