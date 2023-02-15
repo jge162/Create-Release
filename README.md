@@ -60,4 +60,4 @@ jobs:
 
 # License info:
 
-jge162/create-release is licensed under the [MIT License.](https://github.com/jge162/create-release/blob/main/LICENSE)
+jge162/create-release is licensed under the [MIT License](https://github.com/jge162/create-release/blob/main/LICENSE)
