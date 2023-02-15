@@ -1,0 +1,43 @@
+name: Release on Pull Request Close
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'create release major') && github.event.pull_request.user.login == 'jge162'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and test code
+        run: |
+          # Build and test code here
+
+      - name: Get latest tag
+        run: |
+          git fetch --tags
+          echo "::set-output name=latest_tag::$(git describe --tags $(git rev-list --tags --max-count=1))"
+        id: get_latest_tag
+
+      - name: Bump major version
+        run: |
+          semver=$(echo "${{ steps.get_latest_tag.outputs.latest_tag }}")
+          major=$(echo $semver | cut -d'.' -f1)
+          minor=$(echo $semver | cut -d'.' -f2)
+          patch=$(echo $semver | cut -d'.' -f3)
+          new_major=$((major+1))
+          new_tag="$new_major.$minor.$patch"
+          echo "::set-output name=new_tag::$new_tag"
+        id: bump_version
+
+      - name: Create release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ steps.bump_version.outputs.new_tag }}
+          release_name: Release ${{ steps.bump_version.outputs.new_tag }}
+          body: This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include feature updates.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
