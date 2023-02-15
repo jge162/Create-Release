@@ -58,6 +58,33 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
 ```          
 
+# Release of Major version supported now. In versions v1.0.0
+
+In this code snipper below, you will be able to push a major releae update from for example bump
+from v0.0.0 to v1.0.0 onwards per major release only incrementing major v1.0.0 to v2.0.0 and v3.0.0.
+
+```yaml
+ - name: Bump major version
+        run: |
+          semver=$(echo "${{ steps.get_latest_tag.outputs.latest_tag }}")
+          major=$(echo $semver | cut -d'.' -f1)
+          minor=$(echo $semver | cut -d'.' -f2)
+          patch=$(echo $semver | cut -d'.' -f3)
+          new_major=$((major+1))
+          new_tag="$new_major.$minor.$patch"
+          echo "::set-output name=new_tag::$new_tag"
+        id: bump_version
+
+      - name: Create release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ steps.bump_version.outputs.new_tag }}
+          release_name: Release ${{ steps.bump_version.outputs.new_tag }}
+          body: This is a MAJOR release ${{ steps.bump_version.outputs.new_tag }} which will include feature updates.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
 # License info:
 
 jge162/create-release is licensed under the [MIT License](https://github.com/jge162/create-release/blob/main/LICENSE)
