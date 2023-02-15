@@ -5,7 +5,7 @@ Create a new release when a Pull Request is closed (with certain conditions).
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/jge162/Action-Workflows/create_release_minor.yml)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jge162/create-release)
 ![GitHub Repo stars](https://img.shields.io/github/stars/jge162/create-release)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/jge162/Action-workflows)
+![GitHub package.json version (subfolder of monorepo)](https://img.shields.io/github/package-json/v/jge162/create-release?filename=package.json)
 
 # Release Action, update v0.0.1 which has now been updated to v1.0.0 (major). 
 
