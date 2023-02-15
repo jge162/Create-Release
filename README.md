@@ -105,7 +105,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-# Future releases to expect soon are v0.1.0 (minor) and v0.0.1 (patch).
+# Future releases to expect soon are v1.1.0 (minor) and v1.1.1 (patch).
 
 These will allow you to increment each release based on whether it's a major, minor or patch release. 
 For example, can increment v1.0.0 to v1.1.0 then into v1.1.1 after new releases. 
