@@ -58,10 +58,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
 ```          
 
-# Release of **Major** version push supported in update `v1.0.0`
+# Release of 'Major' version push supported in update `v1.0.0`
 
-version support in release candidates is v1.0.0 (major), v0.1.0 (minor) and v0.0.1 (patch).
-Each time a pull request is closed, depending on if you chose, major, minor or patch release. 
+In this version release candidates v1.0.0 (major). Each time a pull request is closed, depending on if you chose, major, minor or patch release. 
 The selected version will increment by +1. 
 
 In this code snippet below, you will be able to push a major releae update, for example bump
@@ -105,6 +104,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+# Future releases to expect soon are v0.1.0 (minor) and v0.0.1 (patch).
+
+These will allow you to increment each release based on whether it's a major, minor or patch release. 
+For example, can increment v1.0.0 to v1.1.0 then into v1.1.1 after new releases. 
 
 # License info:
 
