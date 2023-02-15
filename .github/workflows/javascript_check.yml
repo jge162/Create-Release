@@ -1,11 +1,9 @@
 name: Javascript Action error checker 
+
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  schedule:
+  - cron: '0 0,12 * * *' 
+    # action will run everyday at 12 am and 12 pm
 
 jobs:
   Javascript-analyze:
