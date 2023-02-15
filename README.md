@@ -8,15 +8,11 @@ Create a new release when a Pull Request is closed (with certain conditions).
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/jge162/Action-workflows)
 [![Release on Pull Request Close](https://github.com/jge162/create-release/actions/workflows/create_release.yml/badge.svg)](https://github.com/jge162/create-release/actions/workflows/create_release.yml)
 
-# Release Action:
+# Release Action, update v0.0.1 which has now been updated to v1.0.0 (major). 
 
 Conditions of this release to run are a pull request must be closed and merged. 
 Next you must be the repo owner and have a pull request label called `create release` chosen. 
 This ensures no new releases are created unnecessary.
-
-version support in release candidates is v1.0.0 (major), v0.1.0 (minor) and v0.0.1 (patch).
-Each time a pull request is closed, depending on if you chose, major, minor or patch release. 
-The selected version will increment by +1.
 
 ```yaml
 name: Release on Pull Request Close
@@ -62,7 +58,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
 ```          
 
-# Release of **Major** version push supported in update -> `v1.0.0`
+# Release of **Major** version push supported in update `v1.0.0`
+
+version support in release candidates is v1.0.0 (major), v0.1.0 (minor) and v0.0.1 (patch).
+Each time a pull request is closed, depending on if you chose, major, minor or patch release. 
+The selected version will increment by +1. 
 
 In this code snippet below, you will be able to push a major releae update, for example bump
 from v0.0.0 to v1.0.0 onwards per major release created only incrementing major v1.0.0 to v2.0.0 and v3.0.0.
