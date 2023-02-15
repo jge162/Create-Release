@@ -14,6 +14,10 @@ Conditions of this release to run are a pull request must be closed and merged.
 Next you must be the repo owner and have a pull request label called `create release` chosen. 
 This ensures no new releases are created unnecessary.
 
+version support in release candidates is v1.0.0 (major), v0.1.0 (minor) and v0.0.1 (patch).
+Each time a pull request is closed, depending on if you chose, major, minor or patch release. 
+The selected version will increment by +1.
+
 ```yaml
 name: Release on Pull Request Close
 
