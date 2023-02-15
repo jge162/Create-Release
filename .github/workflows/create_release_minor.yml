@@ -38,6 +38,6 @@ jobs:
         with:
           tag_name: ${{ steps.bump_version.outputs.new_tag }}
           release_name: Release ${{ steps.bump_version.outputs.new_tag }}
-          body: This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include bug fixes and minor updates.
+          body: This is a MINOR release ${{ steps.bump_version.outputs.new_tag }} which will include bug fixes and minor updates.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
