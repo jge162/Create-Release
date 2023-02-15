@@ -63,7 +63,9 @@ jobs:
 In this code snippet below, you will be able to push a major releae update, for example bump
 from v0.0.0 to v1.0.0 onwards per major release created only incrementing major v1.0.0 to v2.0.0 and v3.0.0.
 
-You must create a Label called 'create release major' and GitHub user == to <owner> as conditions for release.
+You must create a Label called 'create release major' and GitHub user == to <owner> and pull request `merge` == true,
+as conditions for release Action to run.
+  
 See example below: 
 
 ```yaml
@@ -76,7 +78,7 @@ jobs:
     steps:
 ```
 
-Here you can see how the Major bump occurs and does not affect, minor or patch versions.
+# Here you can see how the Major bump occurs and does not affect, minor or patch versions.
   
 ```yaml
  - name: Bump major version
