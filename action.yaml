@@ -23,6 +23,9 @@ inputs:
   prerelease:
     description: "Identify the release as a prerelease. Defaults to false"
     required: false
+  release_name:
+    description: "Identify release_name as a prerelease. Defaults to false"
+    required: false
   repository:
     description: "Repository to make releases against, in <owner>/<repo> format"
     required: false
