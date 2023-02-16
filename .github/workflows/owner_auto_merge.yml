@@ -1,16 +1,24 @@
-name: PRs auto merge
+name: Auto-merge Owner only
 
 on:
   pull_request:
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
-  pr-automerge:
+  auto-merge:
     runs-on: ubuntu-latest
+    if: ${{ github.actor == 'jge162' }}
     steps:
-    - uses: davideviolante/pr-automerge-action@v1.3.3
-      env:
-        GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
-      with:
-        merge-method: 'merge' # Pull request merge method: "merge", "squash", "rebase". Default is "squash".
-        min-approvals: 0 # Default 2
-        base-ref: 'main' # Default 'dev'
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: main
+
+      - name: Enable auto-merge
+        run: gh pr merge --auto --merge "$PR_URL" 
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.WORKFLOW_SECRET}}
