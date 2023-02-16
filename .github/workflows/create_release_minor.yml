@@ -37,11 +37,12 @@ jobs:
           body: This is a new release ${{ env.NEW_TAG }} which will include bug fixes and minor updates.
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
-          NEW_TAG: ${{ secrets.NEW_TAG }}
+          NEW_TAG: ${{ steps.bump_version.outputs.new_tag }}
           latest_tag: ${{ steps.get_latest_tag.outputs.latest_tag }}
       - name: Set output
         run: |
-          echo "::set-secret name=NEW_TAG::$(cat new_tag.txt)"   
+          echo "::set-secret name=NEW_TAG::$(cat
+ 
 
 
   ChangeLog_Enforcer:
