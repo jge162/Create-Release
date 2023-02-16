@@ -13,37 +13,38 @@ jobs:
       - name: Python Action
         uses: jge162/Action-workflows@1.0.1
 
-      - name: Build minor release
-        run: |
-          # Build and test code here
+      #- name: Build minor release
+      #  run: |
+      #    # Build and test code here
 
       - name: Get latest tag
         run: |
           git fetch --tags
-          echo "latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))" >> $GITHUB_ENV
+          echo "::set-output name=latest_tag::$(git describe --tags $(git rev-list --tags --max-count=1))"
+        id: get_latest_tag
 
       - name: Bump minor version
         run: |
-          semver=$latest_tag
+          semver=$(echo "${{ steps.get_latest_tag.outputs.latest_tag }}")
           major=$(echo $semver | cut -d'.' -f1)
           minor=$(echo $semver | cut -d'.' -f2)
           patch=$(echo $semver | cut -d'.' -f3)
           new_minor=$((minor+1))
           new_tag="$major.$new_minor.$patch"
-          echo "new_tag=$new_tag" >> $GITHUB_ENV
+          echo "::set-output name=new_tag::$new_tag"
+        id: bump_version
 
       - name: create-release-on-close
         uses: jge162/create-release@v1.1.1
         with:
           files: |
             build/*
-            
-          tag_name: ${{ env.latest_tag }}
-          prerelease: Release ${{ env.new_tag }}
-          body: This is a new release ${{ env.new_tag }} which will include bug fixes and minor updates.            
-          #tag_name: ${{ steps.bump_version.outputs.new_tag }}
-          #prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
-          #body: This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include bug fixes and minor updates.
+          #tag_name: ${{ env.latest_tag }}
+          #prerelease: Release ${{ env.new_tag }}
+          #body: This is a new release ${{ env.new_tag }} which will include bug fixes and minor updates.            
+          tag_name: ${{ steps.bump_version.outputs.new_tag }}
+          prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
+          body: This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include bug fixes and minor updates.
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
 
