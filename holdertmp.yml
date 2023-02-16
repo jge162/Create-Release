@@ -1,0 +1,16 @@
+- name: Get latest tag
+        run: |
+          git fetch --tags
+          echo "::set-output name=latest_tag::$(git describe --tags $(git rev-list --tags --max-count=1))"
+        id: get_latest_tag
+
+      - name: Bump minor version
+        run: |
+          semver=$(echo "${{ steps.get_latest_tag.outputs.latest_tag }}")
+          major=$(echo $semver | cut -d'.' -f1)
+          minor=$(echo $semver | cut -d'.' -f2)
+          patch=$(echo $semver | cut -d'.' -f3)
+          new_minor=$((minor+1))
+          new_tag="$major.$new_minor.$patch"
+          echo "::set-output name=new_tag::$new_tag"
+        id: bump_version
