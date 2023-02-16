@@ -29,7 +29,7 @@ on:
   pull_request:
     types: [closed]
 
-jobs:
+jobs:  
   build-and-release:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'create release') && github.event.pull_request.user.login == 'jge162'
