@@ -10,9 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'create release major') && github.event.pull_request.user.login == 'jge162'
     steps:
-      - name: Checkout code
+      #- name: Checkout code
         #uses: actions/checkout@v2
-        uses: jge162/Action-workflows@v1.0.1
+      - name: Python Action
+        uses: jge162/Action-workflows@1.0.1
 
       - name: Build major release
         run: |
@@ -35,9 +36,11 @@ jobs:
           echo "::set-output name=new_tag::$new_tag"
         id: bump_version
 
-      - name: Create release
+      #- name: Create release
         #uses: actions/create-release@v1
+      - name: create-release-on-close
         uses: jge162/create-release@v1.1.1
+  
         with:
           tag_name: ${{ steps.bump_version.outputs.new_tag }}
           release_name: Release ${{ steps.bump_version.outputs.new_tag }}
@@ -56,9 +59,11 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout code
+      #- name: Checkout code
         #uses: actions/checkout@v2
-        uses: jge162/Action-workflows@v1.0.1
+      - name: Python Action
+        uses: jge162/Action-workflows@1.0.1
+ 
         with:
           ref: main
 
