@@ -200,7 +200,7 @@ Here you can see how the **Major** bump occurs and does not affect, minor or pat
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-# Feature releases of version v2.1.1 (major, minor, patch).
+# Feature release of version v2.1.1 (major, minor, patch).
 
 This example below displays full code running (major) just replace `bumper major version`
 as need depending on which version you are looking to update -> `(major, minor, patch)`. 
