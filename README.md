@@ -18,6 +18,9 @@ Create a new release when a Pull Request is closed (with certain conditions).
 Conditions of this release to run are a pull request must be closed and merged. 
 Next you must be the repo owner and have a pull request label called `create release` chosen. 
 This ensures no new releases are created unnecessary.
+
+Step1: create a new directory `./build/realease_notes.txt` in this follder put your release notes which will be
+uploaded to your release as attachment that can be downloaded. 
  
 ```yaml
 name: Release on Pull Request Close
@@ -101,9 +104,10 @@ Here you can see how the **Major** bump occurs and does not affect, minor or pat
 
       - name: Create release
         uses: actions/create-release@v1
-        with:
+        files: |
+            build/*
           tag_name: ${{ steps.bump_version.outputs.new_tag }}
-          release_name: Release ${{ steps.bump_version.outputs.new_tag }}
+          prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
           body: This is a MAJOR release ${{ steps.bump_version.outputs.new_tag }} which will include feature updates.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -149,9 +153,10 @@ Here you can see how the **Major** bump occurs and does not affect, minor or pat
 
       - name: Create release
         uses: actions/create-release@v1
-        with:
+        files: |
+            build/*
           tag_name: ${{ steps.bump_version.outputs.new_tag }}
-          release_name: Release ${{ steps.bump_version.outputs.new_tag }}
+          prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
           body: This is a MINOR release ${{ steps.bump_version.outputs.new_tag }} which will include bug fixes and minor updates.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -196,9 +201,10 @@ Here you can see how the **Major** bump occurs and does not affect, minor or pat
 
       - name: Create release
         uses: actions/create-release@v1
-        with:
+        files: |
+            build/*
           tag_name: ${{ steps.bump_version.outputs.new_tag }}
-          release_name: Release ${{ steps.bump_version.outputs.new_tag }}
+          prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
           body: This is a PATCH release ${{ steps.bump_version.outputs.new_tag }} which will include bug fixes.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -250,9 +256,10 @@ jobs:
       - name: create-release-on-close
         uses: jge162/create-release@2.1.1
   
-        with:
+       files: |
+            build/*
           tag_name: ${{ steps.bump_version.outputs.new_tag }}
-          release_name: Release ${{ steps.bump_version.outputs.new_tag }}
+          prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
           body: This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include feature updates.
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
