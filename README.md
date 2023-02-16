@@ -173,7 +173,7 @@ from v0.0.0 to v0.0.2 onwards per major release created only incrementing 'patch
 You must create a Label called 'create release patch' and GitHub user == 'owner' to <owner> and pull request `merge` == true,
 as conditions for release Action to run. This prevents all other users from creating releases. 
   
-See example below: 
+See example below:    
 
 ```yaml
 jobs:
