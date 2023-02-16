@@ -1,18 +1,4 @@
-## 6.1.1 - 2023-02-16
 
-Pull request number for the release is: [#68](https://github.com/jge162/create-release/pull/68)
-
-## 5.1.1 - 2023-02-16
-
-Pull request number for the release is: [#64](https://github.com/jge162/create-release/pull/64)
-
-## 4.1.1 - 2023-02-16
-
-Pull request number for the release is: [#63](https://github.com/jge162/create-release/pull/63)
-
-## 3.1.1 - 2023-02-16
-
-Pull request number for the release is: [#62](https://github.com/jge162/create-release/pull/62)
 
 ## 2.1.1 - 2023-02-16
 
