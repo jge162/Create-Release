@@ -6,6 +6,7 @@ Create a new release when a Pull Request is closed (with certain conditions).
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jge162/create-release)
 ![GitHub Repo stars](https://img.shields.io/github/stars/jge162/create-release)
 ![GitHub package.json version (subfolder of monorepo)](https://img.shields.io/github/package-json/v/jge162/create-release?filename=package.json)
+![GitHub](https://img.shields.io/github/license/jge162/create-release?color=purple)
 [![create_release_major_](https://github.com/jge162/create-release/actions/workflows/create_release_major.yml/badge.svg)](https://github.com/jge162/create-release/actions/workflows/create_release_major.yml)
 [![create_release_minor_](https://github.com/jge162/create-release/actions/workflows/create_release_minor.yml/badge.svg)](https://github.com/jge162/create-release/actions/workflows/create_release_minor.yml)
 [![create_release_patch_](https://github.com/jge162/create-release/actions/workflows/create_release_patch.yml/badge.svg)](https://github.com/jge162/create-release/actions/workflows/create_release_patch.yml)
