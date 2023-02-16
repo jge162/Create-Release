@@ -1,6 +1,6 @@
 # Create-release upon closing a pull request:        
  
-Create a new release when a Pull Request is closed (with certain conditions).    
+Create a new release when a Pull Request is closed (with certain conditions).       
  
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/jge162/Action-Workflows/create_release_minor.yml)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jge162/create-release)
