@@ -151,7 +151,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-## Release of 'PATCH' version push supported in update `v1.1.1`
+# Release of 'PATCH' version push supported in update `v1.1.1`
 
 In this version release candidates v1.1.1 (Patch). Each time a pull request is closed, depending on if you chose, major, minor or patch release. 
 The selected version will increment by +1. 
@@ -174,7 +174,7 @@ jobs:
     steps:
 ```
 
-# Here you can see how the **Major** bump occurs and does not affect, minor or patch versions.
+## Here you can see how the **Major** bump occurs and does not affect, minor or patch versions.
   
 ```yaml
  - name: Bump patch version
