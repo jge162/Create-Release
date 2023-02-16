@@ -20,19 +20,17 @@ jobs:
       - name: Get latest tag
         run: |
           git fetch --tags
-          echo "::set-output name=latest_tag::$(git describe --tags $(git rev-list --tags --max-count=1))"
-        id: get_latest_tag
+          echo "latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))" >> $GITHUB_ENV
 
       - name: Bump minor version
         run: |
-          semver=$(echo "${{ steps.get_latest_tag.outputs.latest_tag }}")
+          semver=$latest_tag
           major=$(echo $semver | cut -d'.' -f1)
           minor=$(echo $semver | cut -d'.' -f2)
           patch=$(echo $semver | cut -d'.' -f3)
           new_minor=$((minor+1))
           new_tag="$major.$new_minor.$patch"
-          echo "::set-output name=new_tag::$new_tag"
-        id: bump_version
+          echo "new_tag=$new_tag" >> $GITHUB_ENV
 
       - name: create-release-on-close
         uses: jge162/create-release@v1.1.1
