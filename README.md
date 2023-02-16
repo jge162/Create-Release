@@ -56,7 +56,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
 ```          
-# Release of 'Major' version push supported in update `v1.0.0`
+## Release of 'Major' version push supported in update `v1.0.0`
 
 In this version release candidates v1.0.0 (major). Each time a pull request is closed, depending on if you chose, major, minor or patch release. 
 The selected version will increment by +1. 
@@ -79,7 +79,7 @@ jobs:
     steps:
 ```
 
-# Here you can see how the **Major** bump occurs and does not affect, minor or patch versions.
+## Here you can see how the **Major** bump occurs and does not affect, minor or patch versions.
   
 ```yaml
  - name: Bump major version
