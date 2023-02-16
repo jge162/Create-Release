@@ -1,9 +1,13 @@
 name: create_release_minor_
-# release verison is patch v0.1.0
+# release version is patch v0.1.0
 
 on:
   pull_request:
     types: [closed]
+
+env:
+  latest_tag: ${{ steps.get_latest_tag.outputs.latest_tag }}
+  new_tag: ${{ steps.bump_version.outputs.new_tag }}
 
 jobs:
   create_release_minor:
@@ -12,7 +16,7 @@ jobs:
     steps:
       - name: Python Action
         uses: jge162/Action-workflows@1.0.1
-
+        
       - name: Get latest tag
         run: |
           git fetch --tags
@@ -21,7 +25,7 @@ jobs:
 
       - name: Bump minor version
         run: |
-          semver=$(echo "${{ steps.get_latest_tag.outputs.latest_tag }}")
+          semver=$(echo "${{ env.latest_tag }}")
           major=$(echo $semver | cut -d'.' -f1)
           minor=$(echo $semver | cut -d'.' -f2)
           patch=$(echo $semver | cut -d'.' -f3)
@@ -35,14 +39,12 @@ jobs:
         with:
           files: |
             build/*
-          #tag_name: ${{ env.latest_tag }}
-          #prerelease: Release ${{ env.new_tag }}
-          #body: This is a new release ${{ env.new_tag }} which will include bug fixes and minor updates.            
-          tag_name: ${{ steps.bump_version.outputs.new_tag }}
-          prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
-          body: This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include bug fixes and minor updates.
+          tag_name: ${{ env.new_tag }}
+          prerelease: Release ${{ env.new_tag }}
+          body: This is a new release ${{ env.new_tag }} which will include bug fixes and minor updates.
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
+
 
   ChangeLog_Enforcer:
     runs-on: ubuntu-latest
