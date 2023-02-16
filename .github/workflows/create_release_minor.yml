@@ -38,9 +38,12 @@ jobs:
           files: |
             build/*
             
-          tag_name: ${{ steps.bump_version.outputs.new_tag }}
-          prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
-          body: This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include bug fixes and minor updates.
+          tag_name: ${{ env.latest_tag }}
+          prerelease: Release ${{ env.new_tag }}
+          body: This is a new release ${{ env.new_tag }} which will include bug fixes and minor updates.            
+          #tag_name: ${{ steps.bump_version.outputs.new_tag }}
+          #prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
+          #body: This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include bug fixes and minor updates.
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
 
