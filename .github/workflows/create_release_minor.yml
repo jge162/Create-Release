@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'create release minor') && github.event.pull_request.user.login == 'jge162'
     steps:
-      - name: Python Action
-        uses: jge162/Action-workflows@1.0.1
+      #- name: Python Action
+      #  uses: jge162/Action-workflows@1.0.1
 
-      - name: Build minor release
-        run: |
-          # Build and test code here
+      #- name: Build minor release
+      #  run: |
+      #    # Build and test code here
 
       - name: Get latest tag
         run: |
