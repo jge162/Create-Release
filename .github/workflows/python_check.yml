@@ -5,6 +5,7 @@ on:
   schedule:
   - cron: '0 0,12 * * *' 
     # action will run everyday at 12 am and 12 pm
+  workflow_dispatch:
 
 jobs:
   Python-analyze:
@@ -12,7 +13,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: jge162/Action-workflows@main
+      uses: actions/checkout@v2
 
     - run: |
        echo "Install required dependencies"
