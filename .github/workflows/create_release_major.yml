@@ -43,7 +43,7 @@ jobs:
   
         with:
           tag_name: ${{ steps.bump_version.outputs.new_tag }}
-          release_name: Release ${{ steps.bump_version.outputs.new_tag }}
+          prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
           body: This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include feature updates.
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
