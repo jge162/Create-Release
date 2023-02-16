@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'create release major') && github.event.pull_request.user.login == 'jge162'
     steps:
-      #- name: Checkout code
-        #uses: actions/checkout@v2
-      - name: Python Action
-        uses: jge162/Action-workflows@1.0.1
+      - name: Checkout code
+        uses: actions/checkout@v2
+      #- name: Python Action
+      #  uses: jge162/Action-workflows@1.0.1
       - name: Build
         run: echo ${{ github.sha }} > Release.txt
       - name: Test
