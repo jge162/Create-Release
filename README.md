@@ -200,7 +200,59 @@ Here you can see how the **Major** bump occurs and does not affect, minor or pat
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-## Future releases to expect soon are v2.1.1 (major, minor, patch).
+# Feature releases of version v2.1.1 (major, minor, patch).
+
+This example below displays full code running (major) just replace `bumper major version`
+as need depending on which version you are looking to update -> `(major, minor, patch)`. 
+
+```yaml
+name: create_release_major_
+# release verison is patch v1.0.0
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  create_release_major:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'create release major') && github.event.pull_request.user.login == 'jge162'
+    steps:
+
+      - name: Python Action
+        uses: jge162/Action-workflows@1.0.1
+
+      - name: Build major release
+        run: |
+          # Build and test code here
+
+      - name: Get latest tag
+        run: |
+          git fetch --tags
+          echo "::set-output name=latest_tag::$(git describe --tags $(git rev-list --tags --max-count=1))"
+        id: get_latest_tag
+
+      - name: Bump major version
+        run: |
+          semver=$(echo "${{ steps.get_latest_tag.outputs.latest_tag }}")
+          major=$(echo $semver | cut -d'.' -f1)
+          minor=$(echo $semver | cut -d'.' -f2)
+          patch=$(echo $semver | cut -d'.' -f3)
+          new_major=$((major+1))
+          new_tag="$new_major.$minor.$patch"
+          echo "::set-output name=new_tag::$new_tag"
+        id: bump_version
+
+      - name: create-release-on-close
+        uses: jge162/create-release@v1.1.1
+  
+        with:
+          tag_name: ${{ steps.bump_version.outputs.new_tag }}
+          release_name: Release ${{ steps.bump_version.outputs.new_tag }}
+          body: This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include feature updates.
+        env:
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
+```
 
 ## License info:
 
