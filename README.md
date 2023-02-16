@@ -244,7 +244,7 @@ jobs:
         id: bump_version
 
       - name: create-release-on-close
-        uses: jge162/create-release@v1.1.1
+        uses: jge162/create-release@2.1.1
   
         with:
           tag_name: ${{ steps.bump_version.outputs.new_tag }}
