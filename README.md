@@ -151,6 +151,55 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
+## Release of 'PATCH' version push supported in update `v1.1.1`
+
+In this version release candidates v1.1.1 (Patch). Each time a pull request is closed, depending on if you chose, major, minor or patch release. 
+The selected version will increment by +1. 
+
+In this code snippet below, you will be able to push a 'patch' releae update, for example bump
+from v0.0.0 to v0.0.2 onwards per major release created only incrementing 'patch' v1.1.1 to v1.1.2 and v1.1.3.
+
+You must create a Label called 'create release patch' and GitHub user == 'owner' to <owner> and pull request `merge` == true,
+as conditions for release Action to run. This prevents all other users from creating releases. 
+  
+See example below: 
+
+```yaml
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true &&
+    contains(github.event.pull_request.labels.*.name, 'create release patch') &&
+    github.event.pull_request.user.login == 'jge162'
+    steps:
+```
+
+# Here you can see how the **Major** bump occurs and does not affect, minor or patch versions.
+  
+```yaml
+ - name: Bump patch version
+        run: |
+          semver=$(echo "${{ steps.get_latest_tag.outputs.latest_tag }}")
+          major=$(echo $semver | cut -d'.' -f1)
+          minor=$(echo $semver | cut -d'.' -f2)
+          patch=$(echo $semver | cut -d'.' -f3)
+          new_patch=$((patch+1))
+          new_tag="$major.$minor.$new_patch"
+          echo "::set-output name=new_tag::$new_tag"
+        id: bump_version
+
+      - name: Create release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ steps.bump_version.outputs.new_tag }}
+          release_name: Release ${{ steps.bump_version.outputs.new_tag }}
+          body: This is a PATCH release ${{ steps.bump_version.outputs.new_tag }} which will include bug fixes.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+## Future releases to expect soon are v2.1.1 (major, minor, patch).
+
 ## License info:
 
 jge162/create-release is licensed under the [MIT License](https://github.com/jge162/create-release/blob/main/LICENSE)
