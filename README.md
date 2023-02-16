@@ -13,7 +13,7 @@ Create a new release when a Pull Request is closed (with certain conditions).
 
 <img width="600" alt="Screenshot 2023-02-15 at 9 57 10 PM" src="https://user-images.githubusercontent.com/31228460/219280855-90b2d767-cf8c-49e8-8226-269fa190b42e.png">
 
-# Release Action v0.0.0 below (beta).
+# Release Action v0.0.0 below (beta). 
 
 Conditions of this release to run are a pull request must be closed and merged. 
 Next you must be the repo owner and have a pull request label called `create release` chosen. 
