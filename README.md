@@ -25,8 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'create release') && github.event.pull_request.user.login == 'jge162'
     steps:
-      - name: Checkout code
-        uses: jge162/Action-workflows@main
+      - name: Python Action
+        uses: jge162/Action-workflows@1.0.1
       - name: Build and test code
         run: |
           # Build and test code here
@@ -45,8 +45,8 @@ jobs:
           new_tag="$major.$minor.$new_patch"
           echo "::set-output name=new_tag::$new_tag"
         id: bump_version
-      - name: Create release
-        uses: jge162/create-release@main
+      - name: create-release-on-close
+        uses: jge162/create-release@v1.1.1
         with:
           files: |
             build/*
