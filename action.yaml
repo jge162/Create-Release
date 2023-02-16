@@ -6,60 +6,56 @@ branding:
   color: gray-dark
 inputs:
   release_name: 
-    description: "release version"
+    description: "Release version"
     required: false
   body:
-    description: "Note-worthy description of changes in release"
+    description: "Description of changes"
     required: false
   files:
-    description: "Newline-delimited list of path globs for asset files to upload"
+    description: "List of asset files"
     required: false
   name:
-    description: "Gives the release a custom name. Defaults to tag name"
+    description: "Custom release name"
     required: false
   tag_name:
-    description: "Gives a tag name. Defaults to github.GITHUB_REF"
+    description: "Tag name"
     required: false
   draft:
-    description: "Creates a draft release. Defaults to false"
+    description: "Create a draft"
     required: false
   prerelease:
-    description: "Identify the release as a prerelease. Defaults to false"
-    required: false
-  release_name:
-    description: "Identify release_name as a prerelease. Defaults to false"
+    description: "Identify as prerelease"
     required: false
   repository:
-    description: "Repository to make releases against, in <owner>/<repo> format"
+    description: "Repository in <owner>/<repo> format"
     required: false
   token:
-    description: "Authorized secret GitHub Personal Access Token. Defaults to github.token"
+    description: "GitHub Personal Access Token"
     required: false
     default: ${{ github.WORKFLOW_SECRET }}
   target_commitish:
-    description: "Commitish value that determines where the Git tag is created from. Can be any branch or commit SHA."
+    description: "Commitish value"
     required: false
-  # discussion_category_name:
-  #  description: "If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored."
-  #  required: false
   generate_release_notes:
-    description: "Whether to automatically generate the name and body for this release. If name is specified, the specified name will be used; otherwise, a name will be automatically generated. If body is specified, the body will be pre-pended to the automatically generated notes."
+    description: "Automatically generate name and body"
     required: false
   append_body:
-    description: "Append to existing body instead of overwriting it. Default is false."
+    description: "Append to existing body"
     required: false
 env:
   GITHUB_TOKEN:
-    description: "The GitHub token used to create the release"
+    description: "GitHub token for creating release"
 outputs:
   url:
-    description: "URL to the Release HTML Page"
+    description: "Release HTML Page URL"
   id:
     description: "Release ID"
   upload_url:
-    description: "URL for uploading assets to the release"
+    description: "URL for uploading assets"
   assets:
-    description: "JSON array containing information about each uploaded asset, in the format given [here](https://docs.github.com/en/rest/reference/repos#upload-a-release-asset--code-samples) (minus the `uploader` field)"
+    description: "JSON array of uploaded assets"
+    required: false
 runs:
   using: "node16"
   main: "dist/index.js"
+
