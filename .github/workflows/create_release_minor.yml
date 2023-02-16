@@ -1,5 +1,5 @@
 name: create_release_minor_
-# release version is patch v0.1.0
+# release verison is patch v0.1.0
 
 on:
   pull_request:
@@ -12,36 +12,37 @@ jobs:
     steps:
       - name: Python Action
         uses: jge162/Action-workflows@1.0.1
+
       - name: Get latest tag
-        id: get_latest_tag
         run: |
           git fetch --tags
-          echo "${{ steps.get_latest_tag.outputs.latest_tag }}" > latest_tag.txt
+          echo "::set-output name=latest_tag::$(git describe --tags $(git rev-list --tags --max-count=1))"
+        id: get_latest_tag
+
       - name: Bump minor version
-        id: bump_version
         run: |
-          semver=$(cat latest_tag.txt)
+          semver=$(echo "${{ steps.get_latest_tag.outputs.latest_tag }}")
           major=$(echo $semver | cut -d'.' -f1)
           minor=$(echo $semver | cut -d'.' -f2)
           patch=$(echo $semver | cut -d'.' -f3)
           new_minor=$((minor+1))
           new_tag="$major.$new_minor.$patch"
-          echo "$new_tag" > new_tag.txt
+          echo "::set-output name=new_tag::$new_tag"
+        id: bump_version
+
       - name: create-release-on-close
         uses: jge162/create-release@v1.1.1
         with:
           files: |
             build/*
-          tag_name: ${{ env.NEW_TAG }}
-          prerelease: Release ${{ env.NEW_TAG }}
-          body: This is a new release ${{ env.NEW_TAG }} which will include bug fixes and minor updates.
+          #tag_name: ${{ env.latest_tag }}
+          #prerelease: Release ${{ env.new_tag }}
+          #body: This is a new release ${{ env.new_tag }} which will include bug fixes and minor updates.            
+          tag_name: ${{ steps.bump_version.outputs.new_tag }}
+          prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
+          body: This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include bug fixes and minor updates.
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
-          NEW_TAG: ${{ steps.bump_version.outputs.new_tag }}
-          latest_tag: ${{ steps.get_latest_tag.outputs.latest_tag }}
-      - name: Set output
-        run: |
-          echo "::set-secret name=NEW_TAG::$(cat
  
 
 
