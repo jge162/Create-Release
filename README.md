@@ -36,9 +36,6 @@ jobs:
     steps:
       - name: Python Action
         uses: jge162/Action-workflows@1.0.1
-      - name: Build and test code
-        run: |
-          # Build and test code here
       - name: Get latest tag
         run: |
           git fetch --tags
