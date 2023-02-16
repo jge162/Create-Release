@@ -5,6 +5,9 @@ branding:
   icon: activity
   color: gray-dark
 inputs:
+  release_name: 
+    description: "release version"
+    required: false
   body:
     description: "Note-worthy description of changes in release"
     required: false
