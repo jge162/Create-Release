@@ -39,7 +39,7 @@ jobs:
       #- name: Create release
         #uses: actions/create-release@v1
       - name: create-release-on-close
-        uses: jge162/create-release@v2.1.1
+        uses: jge162/create-release@v1.1.1
   
         with:
           tag_name: ${{ steps.bump_version.outputs.new_tag }}
