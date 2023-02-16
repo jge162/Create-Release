@@ -79,7 +79,7 @@ jobs:
     steps:
 ```
 
-## Here you can see how the **Major** bump occurs and does not affect, minor or patch versions.
+Here you can see how the **Major** bump occurs and does not affect, minor or patch versions.
   
 ```yaml
  - name: Bump major version
@@ -127,7 +127,7 @@ jobs:
     steps:
 ```
 
-## Here you can see how the **Major** bump occurs and does not affect, minor or patch versions.
+Here you can see how the **Major** bump occurs and does not affect, minor or patch versions.
   
 ```yaml
  - name: Bump minor version
@@ -174,7 +174,7 @@ jobs:
     steps:
 ```
 
-## Here you can see how the **Major** bump occurs and does not affect, minor or patch versions.
+Here you can see how the **Major** bump occurs and does not affect, minor or patch versions.
   
 ```yaml
  - name: Bump patch version
