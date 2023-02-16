@@ -7,6 +7,8 @@ Create a new release when a Pull Request is closed (with certain conditions).
 ![GitHub Repo stars](https://img.shields.io/github/stars/jge162/create-release)
 ![GitHub package.json version (subfolder of monorepo)](https://img.shields.io/github/package-json/v/jge162/create-release?filename=package.json)
 
+<img width="500" alt="Screenshot 2023-02-15 at 9 57 10 PM" src="https://user-images.githubusercontent.com/31228460/219280855-90b2d767-cf8c-49e8-8226-269fa190b42e.png">
+
 # Release Action v0.0.0 has now been updated to v1.0.0 (major). 
 
 Conditions of this release to run are a pull request must be closed and merged. 
