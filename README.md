@@ -1,4 +1,4 @@
-# Create-release upon closing a pull request:                  
+# Create-release upon closing a pull request:                     
     
 Create a new release when a Pull Request is closed (with certain conditions).       
  
