@@ -1,4 +1,4 @@
-# Create-release upon closing a pull request:
+## Create-release upon closing a pull request:
 
 Create a new release when a Pull Request is closed (with certain conditions).
 
@@ -7,7 +7,7 @@ Create a new release when a Pull Request is closed (with certain conditions).
 ![GitHub Repo stars](https://img.shields.io/github/stars/jge162/create-release)
 ![GitHub package.json version (subfolder of monorepo)](https://img.shields.io/github/package-json/v/jge162/create-release?filename=package.json)
 
-# Release Action, update v0.0.1 which has now been updated to v1.0.0 (major). 
+## Release Action, update v0.0.1 which has now been updated to v1.0.0 (major). 
 
 Conditions of this release to run are a pull request must be closed and merged. 
 Next you must be the repo owner and have a pull request label called `create release` chosen. 
@@ -57,6 +57,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
 ```          
 
-# License info:
+## License info:
 
 jge162/create-release is licensed under the [MIT License](https://github.com/jge162/create-release/blob/main/LICENSE)
