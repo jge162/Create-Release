@@ -24,7 +24,7 @@ jobs:
           cd ./resources/API
           response=$(curl -s -H "Authorization: token $TOKEN" https://api.github.com/repos/jge162/create-release/actions)
           status=$(echo $response | jq '.workflow_runs[0].status')
-          echo "$(date): GitHub Actions API status: $status" >> ../../commitlog.md
+          echo "$(date): GitHub Actions API status: $status" >> ../commitlog.md
         env:
           TOKEN: ${{ secrets.WORKFLOW_SECRET }}
 
