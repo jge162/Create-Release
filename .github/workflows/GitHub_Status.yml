@@ -19,14 +19,26 @@ jobs:
       - name: Install jq
         run: sudo apt-get install jq
 
+      #- name: Check API Status
+      #  run: |
+      #    cd ./resources/API
+      #    response=$(curl -s -H "Authorization: token $TOKEN" https://api.github.com/repos/$GITHUB_REPOSITORY/actions)
+      #    status=$(echo $response | jq '.status')
+      #    echo "$(date): GitHub Actions API status: $status" >> ../../commitlog.md
+      #  env:
+      #    TOKEN: ${{ secrets.WORKFLOW_SECRET }}
+          
       - name: Check API Status
         run: |
           cd ./resources/API
           response=$(curl -s -H "Authorization: token $TOKEN" https://api.github.com/repos/$GITHUB_REPOSITORY/actions)
+          echo "API response: $response"
           status=$(echo $response | jq '.status')
+          echo "API status: $status"
           echo "$(date): GitHub Actions API status: $status" >> ../../commitlog.md
         env:
           TOKEN: ${{ secrets.WORKFLOW_SECRET }}
+
 
       - name: Commit changes
         run: |
