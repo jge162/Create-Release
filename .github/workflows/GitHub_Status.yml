@@ -33,13 +33,14 @@ jobs:
           cd ./resources/API
           response=$(curl -s https://kctbh9vrtdwd.statuspage.io/api/v2/status.json)
           status=$(echo $response | jq -r '.status.indicator')
-          echo "$(date):\n GitHub Actions API status: $status" >> ../../commitlog.md
+          echo -e "$(date):\n GitHub Actions API status: $status" >> ../../commitlog.md
         env:
           TOKEN: ${{ secrets.WORKFLOW_SECRET }}
 
 
       - name: Commit changes
         run: |
+          echo -e "$(date): $(cat commit_message.txt)\n" >> COMMITLOG.md
           git config --global user.email "${{ secrets.EMAIL }}"
           git config --global user.name "<Jeremy Escobar>"
           git add commitlog.md
