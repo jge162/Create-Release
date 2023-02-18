@@ -26,7 +26,7 @@ jobs:
       run: |
         echo "Build application script outputs Here!"
         python3 -c "
-        scripts = ['javascript_check.py']
+        scripts = ['./resources/javascript_check.py']
         for script in scripts:
             with open(script, 'r') as file:
                 exec(file.read())
