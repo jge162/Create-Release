@@ -18,9 +18,9 @@ The release process has been streamlined even further with this major update. No
 you only need to type the version you want to use in the Pull Request title.
 
 
-### If the Pull Request title includes "Major", the version will be incremented from 0.0.0 to 1.0.0. 
-### If the title includes "Minor", the version will be incremented from 0.0.0 to 0.1.0. 
-### If the title includes "Patch", the version will be incremented from 0.0.0 to 0.0.1. 
+### If the title includes `Major`, the version will be incremented from 0.0.0 to 1.0.0
+### If the title includes `Minor`, the version will be incremented from 0.0.0 to 0.1.0 
+### If the title includes `Patch`, the version will be incremented from 0.0.0 to 0.0.1 
 
 # This new process makes it much easier than creating Pull Request labels and selecting them prior to committing the Pull Request.
 
