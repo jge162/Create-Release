@@ -54,13 +54,13 @@ jobs:
           prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
           body: |
             This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include the following changes:
-            - ${
+            ${
               if [[ "${{ steps.get_pr_title.outputs.title }}" == *"Major"* ]]; then
-                echo "Feature updates"
+                printf "Feature updates"
               elif [[ "${{ steps.get_pr_title.outputs.title }}" == *"Minor"* ]]; then
-                echo "Bug fixes and minor updates"
+                printf "Bug fixes and minor updates"
               else
-                echo "Bug fixes"
+                printf "Bug fixes"
               fi
             }
         env:
