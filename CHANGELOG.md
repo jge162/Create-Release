@@ -1,8 +1,5 @@
 
 
-## 2.1.1 - 2023-02-16
-
-Pull request number for the release is: [#60](https://github.com/jge162/create-release/pull/60)
 
 ## 1.1.1 - 2023-02-15
 
