@@ -68,7 +68,7 @@ jobs:
           
   ChangeLog_Enforcer:
     runs-on: ubuntu-latest
-    needs: [ Create_Release ]
+    needs: [ create_release ]
 
     permissions:
       contents: write
