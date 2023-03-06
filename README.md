@@ -1,6 +1,6 @@
 # Create-release upon closing a pull request:                             
               
-Create a new release when a Pull Request is closed (with certain conditions).                  
+Create a release upon closing a pull request with certain conditions:
  
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/jge162/Action-Workflows/create_release.yml)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jge162/create-release)
@@ -13,21 +13,19 @@ Create a new release when a Pull Request is closed (with certain conditions).
 
 # Release Action v2.1.0 below (Major release and update). 
 
-In this new Major relase I have streamlined the release process even further.
-Now when ever you want to bump a version you only need to type in the Pull
-request title the version you are looking to increment.
+This GitHub Workflow creates a new release whenever a Pull Request is closed under certain conditions. 
+The release process has been streamlined even further with this major update. Now, to increment the version, 
+you only need to type the version you want to use in the Pull Request title.
 
-### If Pull request title == `Major` then it will bump 0.0.0 to 1.0.0
 
-### If Pull request title == `Minor` then it will bump 0.0.0 to 0.1.0
+### If the Pull Request title includes "Major", the version will be incremented from 0.0.0 to 1.0.0. 
+### If the title includes "Minor", the version will be incremented from 0.0.0 to 0.1.0. 
+### If the title includes "Patch", the version will be incremented from 0.0.0 to 0.0.1. 
 
-### If Pull request title == `Patch` then it will bump 0.0.0 to 0.0.1
+# This new process makes it much easier than creating Pull Request labels and selecting them prior to committing the Pull Request.
 
-# This new process makes it way easier then having to create Pull request labels
-and select them prior to commiting Pull request.
-
-Also note, at the moment only only version can be type into the title.
-You cannot put any other words other than Major, Minor or Patch.
+Please note that at the moment, only one version can be typed into the title, 
+and no other words can be included other than Major, Minor, or Patch.
 
 ```yaml
 # The release version will be bumped based on the Pull request title 
