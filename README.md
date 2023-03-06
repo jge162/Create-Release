@@ -13,250 +13,79 @@ Create a new release when a Pull Request is closed (with certain conditions).
 
 <img width="600" alt="Screenshot 2023-02-15 at 9 57 10 PM" src="https://user-images.githubusercontent.com/31228460/219280855-90b2d767-cf8c-49e8-8226-269fa190b42e.png">
 
-# Release Action v0.0.0 below (beta). 
+# Release Action v2.1.0 below (Major release and update). 
 
-Conditions of this release to run are a pull request must be closed and merged. 
-Next you must be the repo owner and have a pull request label called `create release` chosen. 
-This ensures no new releases are created unnecessary.
+In this new Major relase I have streamlined the release process even further.
+Now when ever you want to bump a version you only need to type in the Pull
+request title the version you are looking to increment.
 
-Step1: create a new directory `./build/realease_notes.txt` in this follder put your release notes which will be
-uploaded to your release as attachment that can be downloaded. 
- 
+If Pull request title == `Major` then you will bump like this 0.0.0 to 1.0.0
+Elif Pull request title == `Minor` then it will bump 0.0.0 to 0.1.0
+Else Pull request title == `Patch` then it will bump 0.0.0 to 0.0.1
+
+### This new process makes it way easier then having to create Pull request labels
+and select them prior to commiting Pull request.
+
+Also note, at the moment only only version can be type into the title.
+You cannot put any other words other than Major, Minor or Patch.
+
 ```yaml
-name: Release on Pull Request Close
+# The release version will be bumped based on the Pull request title 
+# for example in title Major will result in (bumps 0.0.0 to 1.0.0)
+name: Create_Release
 
 on:
   pull_request:
     types: [closed]
 
-jobs:      
-  build-and-release:
+jobs:
+  create_release:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'create release') && github.event.pull_request.user.login == 'jge162'
-    steps:
+    if: github.event.pull_request.merged == true && (contains(github.event.pull_request.title, 'Major') ||            contains(github.event.pull_request.title, 'Minor') || contains(github.event.pull_request.title, 'Patch')) && github.event.pull_request.user.login == 'jge162'
+    steps:  
+      - name: Get PR title
+        id: get_pr_title
+        run: echo "::set-output name=title::${{ github.event.pull_request.title }}"
+
       - name: Python Action
-        uses: jge162/Action-workflows@1.0.1
+        uses: jge162/Action-workflows@1.1.1
+
       - name: Get latest tag
         run: |
           git fetch --tags
           echo "::set-output name=latest_tag::$(git describe --tags $(git rev-list --tags --max-count=1))"
         id: get_latest_tag
-      - name: Bump patch version
+
+      - name: Bump version
         run: |
           semver=$(echo "${{ steps.get_latest_tag.outputs.latest_tag }}")
           major=$(echo $semver | cut -d'.' -f1)
           minor=$(echo $semver | cut -d'.' -f2)
           patch=$(echo $semver | cut -d'.' -f3)
-          new_patch=$((patch+1))
-          new_tag="$major.$minor.$new_patch"
+          if [[ "${{ steps.get_pr_title.outputs.title }}" == *"Major"* ]]; then
+            new_major=$((major+1))
+            new_tag="$new_major.$minor.$patch"
+          elif [[ "${{ steps.get_pr_title.outputs.title }}" == *"Minor"* ]]; then
+            new_minor=$((minor+1))
+            new_tag="$major.$new_minor.$patch"
+          else
+            new_patch=$((patch+1))
+            new_tag="$major.$minor.$new_patch"
+          fi
           echo "::set-output name=new_tag::$new_tag"
         id: bump_version
+
       - name: create-release-on-close
-        uses: jge162/create-release@v1.1.1
+        uses: jge162/create-release@v1.1.0
+  
         with:
           files: |
             build/*
+            
           tag_name: ${{ steps.bump_version.outputs.new_tag }}
+          prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
           body: |
-            Release has been successfully created with GitHub Action, release: ${{ steps.bump_version.outputs.new_tag }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
-```          
-# Release of 'Major' version push supported in update `v1.0.0`
-
-In this version release candidates v1.0.0 (major). Each time a pull request is closed, depending on if you chose, major, minor or patch release. 
-The selected version will increment by +1. 
-
-In this code snippet below, you will be able to push a major releae update, for example bump
-from v0.0.0 to v1.0.0 onwards per major release created only incrementing major v1.0.0 to v2.0.0 and v3.0.0.
-
-You must create a Label called 'create release major' and GitHub user == <owner> to <owner> and pull request `merge` == true,
-as conditions for release Action to run. This prevents all other users from creating releases. 
-  
-See example below: 
-
-```yaml
-jobs:
-  build-and-release:
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true &&
-    contains(github.event.pull_request.labels.*.name, 'create release major') &&
-    github.event.pull_request.user.login == 'jge162'
-    steps:
-```
-
-Here you can see how the **Major** bump occurs and does not affect, minor or patch versions.
-  
-```yaml
- - name: Bump major version
-        run: |
-          semver=$(echo "${{ steps.get_latest_tag.outputs.latest_tag }}")
-          major=$(echo $semver | cut -d'.' -f1)
-          minor=$(echo $semver | cut -d'.' -f2)
-          patch=$(echo $semver | cut -d'.' -f3)
-          new_major=$((major+1))
-          new_tag="$new_major.$minor.$patch"
-          echo "::set-output name=new_tag::$new_tag"
-        id: bump_version
-
-      - name: Create release
-        uses: actions/create-release@v1
-        files: |
-            build/*
-          tag_name: ${{ steps.bump_version.outputs.new_tag }}
-          prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
-          body: This is a MAJOR release ${{ steps.bump_version.outputs.new_tag }} which will include feature updates.
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
-
-
-# Release of 'MINOR' version push supported in update `v1.1.0`
-
-In this version release candidates v1.1.0 (minor). Each time a pull request is closed, depending on if you chose, major, minor or patch release. 
-The selected version will increment by +1. 
-
-In this code snippet below, you will be able to push a 'minor' releae update, for example bump
-from v1.0.0 to v1.1.0 onwards per major release created only incrementing 'minor' v1.1.0 to v1.2.0 and v1.3.0.
-
-You must create a Label called 'create release minor' and GitHub user == <owner> to <owner> and pull request `merge` == true,
-as conditions for release Action to run. This prevents all other users from creating releases. 
-  
-See example below: 
-
-```yaml
-jobs:
-  build-and-release:
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true &&
-    contains(github.event.pull_request.labels.*.name, 'create release minor') &&
-    github.event.pull_request.user.login == 'jge162'
-    steps:
-```
-
-Here you can see how the **Major** bump occurs and does not affect, minor or patch versions.
-  
-```yaml
- - name: Bump minor version
-        run: |
-          semver=$(echo "${{ steps.get_latest_tag.outputs.latest_tag }}")
-          major=$(echo $semver | cut -d'.' -f1)
-          minor=$(echo $semver | cut -d'.' -f2)
-          patch=$(echo $semver | cut -d'.' -f3)
-          new_minor=$((minor+1))
-          new_tag="$major.$new_minor.$patch"
-          echo "::set-output name=new_tag::$new_tag"
-        id: bump_version
-
-      - name: Create release
-        uses: actions/create-release@v1
-        files: |
-            build/*
-          tag_name: ${{ steps.bump_version.outputs.new_tag }}
-          prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
-          body: This is a MINOR release ${{ steps.bump_version.outputs.new_tag }} which will include bug fixes and minor updates.
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
-
-# Release of 'PATCH' version push supported in update `v1.1.1`
-
-In this version release candidates v1.1.1 (Patch). Each time a pull request is closed, depending on if you chose, major, minor or patch release. 
-The selected version will increment by +1. 
-
-In this code snippet below, you will be able to push a 'patch' releae update, for example bump
-from v0.0.0 to v0.0.2 onwards per major release created only incrementing 'patch' v1.1.1 to v1.1.2 and v1.1.3.
-
-You must create a Label called 'create release patch' and GitHub user == 'owner' to <owner> and pull request `merge` == true,
-as conditions for release Action to run. This prevents all other users from creating releases. 
-  
-See example below:    
-
-```yaml
-jobs:
-  build-and-release:
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true &&
-    contains(github.event.pull_request.labels.*.name, 'create release patch') &&
-    github.event.pull_request.user.login == 'jge162'
-    steps:
-```
-
-Here you can see how the **Major** bump occurs and does not affect, minor or patch versions.
-  
-```yaml
- - name: Bump patch version
-        run: |
-          semver=$(echo "${{ steps.get_latest_tag.outputs.latest_tag }}")
-          major=$(echo $semver | cut -d'.' -f1)
-          minor=$(echo $semver | cut -d'.' -f2)
-          patch=$(echo $semver | cut -d'.' -f3)
-          new_patch=$((patch+1))
-          new_tag="$major.$minor.$new_patch"
-          echo "::set-output name=new_tag::$new_tag"
-        id: bump_version
-
-      - name: Create release
-        uses: actions/create-release@v1
-        files: |
-            build/*
-          tag_name: ${{ steps.bump_version.outputs.new_tag }}
-          prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
-          body: This is a PATCH release ${{ steps.bump_version.outputs.new_tag }} which will include bug fixes.
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
-
-# Feature release of version v2.1.1 (major, minor, patch).
-
-This example below displays full code running (major) just replace `bumper major version`
-as need depending on which version you are looking to update -> `(major, minor, patch)`. 
-```yaml
-name: create_release_major_
-# release verison is patch v1.0.0
-
-on:
-  pull_request:
-    types: [closed]
-
-jobs:
-  create_release_major:
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'create release major') && github.event.pull_request.user.login == 'jge162'
-    steps:
-
-      - name: Python Action
-        uses: jge162/Action-workflows@1.0.1
-
-      - name: Build major release
-        run: |
-          # Build and test code here
-
-      - name: Get latest tag
-        run: |
-          git fetch --tags
-          echo "::set-output name=latest_tag::$(git describe --tags $(git rev-list --tags --max-count=1))"
-        id: get_latest_tag
-
-      - name: Bump major version
-        run: |
-          semver=$(echo "${{ steps.get_latest_tag.outputs.latest_tag }}")
-          major=$(echo $semver | cut -d'.' -f1)
-          minor=$(echo $semver | cut -d'.' -f2)
-          patch=$(echo $semver | cut -d'.' -f3)
-          new_major=$((major+1))
-          new_tag="$new_major.$minor.$patch"
-          echo "::set-output name=new_tag::$new_tag"
-        id: bump_version
-
-      - name: create-release-on-close
-        uses: jge162/create-release@2.1.1
-  
-       files: |
-            build/*
-          tag_name: ${{ steps.bump_version.outputs.new_tag }}
-          prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
-          body: This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include feature updates.
+            This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include the following changes: ${{ steps.get_pr_title.outputs.title }}
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
 ```
