@@ -17,11 +17,11 @@ In this new Major relase I have streamlined the release process even further.
 Now when ever you want to bump a version you only need to type in the Pull
 request title the version you are looking to increment.
 
-### If Pull request title == `Major` then you will bump like this 0.0.0 to 1.0.0
+### If Pull request title == `Major` then it will bump 0.0.0 to 1.0.0
 
-### Elif Pull request title == `Minor` then it will bump 0.0.0 to 0.1.0
+### If Pull request title == `Minor` then it will bump 0.0.0 to 0.1.0
 
-### Else Pull request title == `Patch` then it will bump 0.0.0 to 0.0.1
+### If Pull request title == `Patch` then it will bump 0.0.0 to 0.0.1
 
 # This new process makes it way easier then having to create Pull request labels
 and select them prior to commiting Pull request.
