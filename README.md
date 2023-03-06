@@ -211,7 +211,6 @@ Here you can see how the **Major** bump occurs and does not affect, minor or pat
 
 This example below displays full code running (major) just replace `bumper major version`
 as need depending on which version you are looking to update -> `(major, minor, patch)`. 
-
 ```yaml
 name: create_release_major_
 # release verison is patch v1.0.0
