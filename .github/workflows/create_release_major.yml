@@ -53,10 +53,7 @@ jobs:
           tag_name: ${{ steps.bump_version.outputs.new_tag }}
           prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
           body: |
-            This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include the following changes:
-            - $(if [[ "${{ steps.get_pr_title.outputs.title }}" == *"Major"* ]]; 
-            then printf "Feature updates"; elif [[ "${{ steps.get_pr_title.outputs.title }}" == *"Minor"* ]]; 
-            then printf "Bug fixes and minor updates"; else printf "Bug fixes"; fi;)
+            This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include the following changes: ${{ steps.get_pr_title.outputs.title }}
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
           
