@@ -1,6 +1,6 @@
 ---
-Name: " "
-About: " "
+Name: New Issue
+About: Create a report to help us improve our software
 Title: Please describe issue/bug you found
 Labels: question
 Assignees: jge162
