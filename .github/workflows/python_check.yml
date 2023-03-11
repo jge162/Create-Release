@@ -2,8 +2,8 @@
 name: Python Action
 
 on:
-  schedule:
-  - cron: '0 0 * * 6' 
+  #schedule:
+  #- cron: '0 0 * * 6' 
     # action will run once a week on Saturday at 12:00 am 
   workflow_dispatch:
 
@@ -26,7 +26,7 @@ jobs:
     - run: |
         echo "Build application script outputs Here!"
         python3 -c "
-        scripts = [ 'foo.py']
+        scripts = [ '/dist/javascript_check.py']
         for script in scripts:
             with open(script, 'r') as file:
                 exec(file.read())
