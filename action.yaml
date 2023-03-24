@@ -5,7 +5,6 @@ branding:
   icon: activity
   color: yellow
 inputs:
-  body:
   release_name: 
     description: "Release version"
     required: false
