@@ -32,7 +32,7 @@ inputs:
   token:
     description: "GitHub Personal Access Token"
     required: false
-    default: ${{ github.WORKFLOW_SECRET }}
+    default: ${{ secrets.GITHUB_TOKEN }}
   target_commitish:
     description: "Commitish value"
     required: false
