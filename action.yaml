@@ -31,7 +31,7 @@ inputs:
     required: false
   token:
     description: "GitHub Personal Access Token"
-    required: false
+    required: true
     default: ${{ github.WORKFLOW_SECRET }}
   target_commitish:
     description: "Commitish value"
