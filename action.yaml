@@ -42,8 +42,6 @@ inputs:
   append_body:
     description: "Append to existing body"
     required: false
-env:
-  GITHUB_TOKEN: "GitHub token for creating release"
 outputs:
   url:
     description: "Release HTML Page URL"
