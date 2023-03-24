@@ -47,12 +47,16 @@ env:
 outputs:
   url:
     description: "Release HTML Page URL"
+    value: ${{ steps.create_release.outputs.url }}
   id:
     description: "Release ID"
+    value: ${{ steps.create_release.outputs.id }}
   upload_url:
     description: "URL for uploading assets"
+    value: ${{ steps.create_release.outputs.upload_url }}
   assets:
     description: "JSON array of uploaded assets"
+    value: ${{ steps.create_release.outputs.assets }}
 runs:
   using: "node16"
   main: "dist/index.js"
