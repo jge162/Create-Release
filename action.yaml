@@ -52,9 +52,9 @@ outputs:
     description: "Release ID"
   upload_url:
     description: "URL for uploading assets"
-  assets:
-    description: "JSON array of uploaded assets"
-    required: false
+  files:
+    description: "List of asset files"
+    default: ""
 runs:
   using: "node16"
   main: "dist/index.js"
