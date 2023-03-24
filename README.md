@@ -46,7 +46,7 @@ jobs:
         run: echo "::set-output name=title::${{ github.event.pull_request.title }}"
 
       - name: Python Action
-        uses: jge162/Action-workflows@1.1.1
+        uses: jge162/Action-workflows@2.1.1
 
       - name: Get latest tag
         run: |
@@ -74,7 +74,7 @@ jobs:
         id: bump_version
 
       - name: create-release-on-close
-        uses: jge162/create-release@v1.1.0
+        uses: jge162/create-release@v2.1.1
   
         with:
           files: |
