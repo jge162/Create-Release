@@ -5,6 +5,7 @@ branding:
   icon: activity
   color: yellow
 inputs:
+  body:
   release_name: 
     description: "Release version"
     required: false
@@ -43,8 +44,7 @@ inputs:
     description: "Append to existing body"
     required: false
 env:
-  GITHUB_TOKEN:
-    description: "GitHub token for creating release"
+  GITHUB_TOKEN: "GitHub token for creating release"
 outputs:
   url:
     description: "Release HTML Page URL"
