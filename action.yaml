@@ -31,7 +31,7 @@ inputs:
     required: false
   token:
     description: "GitHub Personal Access Token"
-    required: true
+    required: false
     default: ${{ github.WORKFLOW_SECRET }}
   target_commitish:
     description: "Commitish value"
@@ -52,6 +52,9 @@ outputs:
     description: "Release ID"
   upload_url:
     description: "URL for uploading assets"
+  assets:
+    description: "JSON array of uploaded assets"
+    required: false
 runs:
   using: "node16"
   main: "dist/index.js"
