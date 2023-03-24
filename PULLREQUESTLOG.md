@@ -1,3 +1,7 @@
+## refs/pull/140/merge - 2023-03-24
+
+Pull request number for DEPENDABOT is: [#140](https://github.com/jge162/create-release/pull/140)
+
 ## refs/pull/137/merge - 2023-03-24
 
 Pull request number for auto-merge is: [#137](https://github.com/jge162/create-release/pull/137)
