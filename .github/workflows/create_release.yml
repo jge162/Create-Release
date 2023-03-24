@@ -44,7 +44,8 @@ jobs:
         id: bump_version
 
       - name: create-release-on-close
-        uses: jge162/create-release@2.1.0
+        # uses: jge162/create-release@2.1.0
+        uses: jge162/Action-workflows@1.1.1
   
         with:
           files: |
@@ -55,7 +56,7 @@ jobs:
           body: |
             This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include the following changes: ${{ steps.get_pr_title.outputs.title }}
         env:
-          token: ${{ secrets.WORKFLOW_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
           
   ChangeLog_Enforcer:
     runs-on: ubuntu-latest
