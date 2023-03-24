@@ -54,7 +54,6 @@ outputs:
     description: "URL for uploading assets"
   assets:
     description: "JSON array of uploaded assets"
-    required: true
 runs:
   using: "node16"
   main: "dist/index.js"
