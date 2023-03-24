@@ -11,7 +11,7 @@ When user specified conditions are met:
 
 <img width="600" alt="Screenshot 2023-02-15 at 9 57 10 PM" src="https://user-images.githubusercontent.com/31228460/219280855-90b2d767-cf8c-49e8-8226-269fa190b42e.png">
 
-# Create-Release GitHub Action version 2.1.0 is now out: `Major release and feature update`. 
+# Create-Release GitHub Action version 2.1.1 is now out: `Major release and feature update`. 
 
 This GitHub Workflow creates a new release whenever a Pull Request is closed under certain conditions. 
 The release process has been streamlined even further with this major update. Now, to increment the version, 
