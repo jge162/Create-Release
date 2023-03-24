@@ -55,8 +55,8 @@ jobs:
           prerelease: Release ${{ steps.bump_version.outputs.new_tag }}
           body: |
             This is a new release ${{ steps.bump_version.outputs.new_tag }} which will include the following changes: ${{ steps.get_pr_title.outputs.title }}
-        # env:
-          # GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
           
   ChangeLog_Enforcer:
     runs-on: ubuntu-latest
