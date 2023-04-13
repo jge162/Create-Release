@@ -15,8 +15,10 @@ jobs:
         id: get_pr_title
         run: echo "::set-output name=title::${{ github.event.pull_request.title }}"
 
-      - name: Python Action
-        uses: jge162/Action-workflows@2.1.0
+      # - name: Python Action
+      #   uses: jge162/Action-workflows@2.1.0
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       - name: Get latest tag
         run: |
@@ -65,8 +67,8 @@ jobs:
       contents: write
 
     steps:
-      - name: Python Action
-        uses: jge162/Action-workflows@2.1.0
+      - name: Action
+        uses: actions/checkout@v2
  
         with:
           ref: main
