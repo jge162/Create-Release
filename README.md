@@ -1,7 +1,7 @@
 # Create-release upon closing a pull request:                             
                    
 When user specified conditions are met:  
-  
+
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/jge162/Action-Workflows/create_release.yml)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jge162/create-release)
 ![GitHub Repo stars](https://img.shields.io/github/stars/jge162/create-release)
