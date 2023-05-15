@@ -1,3 +1,7 @@
+## refs/pull/153/merge - 2023-05-15
+
+Pull request number for auto-merge is: [#153](https://github.com/jge162/create-release/pull/153)
+
 ## refs/pull/152/merge - 2023-05-15
 
 Pull request number for auto-merge is: [#152](https://github.com/jge162/create-release/pull/152)
