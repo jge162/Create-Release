@@ -5,6 +5,10 @@ branding:
   icon: activity
   color: yellow
 inputs:
+  token:
+    description: "GitHub Personal Access Token"
+    required: false
+    default: ${{ secrets.GITHUB_TOKEN }}
   release_name: 
     description: "Release version"
     required: false
