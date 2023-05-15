@@ -29,10 +29,6 @@ inputs:
   repository:
     description: "Repository in <owner>/<repo> format"
     required: false
-  token:
-    description: "GitHub Personal Access Token"
-    required: false
-    default: ${{ secrets.WORKFLOW_SECRET }}
   target_commitish:
     description: "Commitish value"
     required: false
