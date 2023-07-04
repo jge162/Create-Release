@@ -1,4 +1,4 @@
-name: create-release-on-close
+name: Create-release-on-close
 description: Creates a new GitHub release when a pull request is closed
 author: Jeremy Escobar
 branding:
