@@ -10,7 +10,7 @@ permissions:
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'jge162[bot]' }}
+    if: ${{ github.actor == 'jge162[bot]' || github.actor == 'jge162' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
