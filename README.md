@@ -1,4 +1,4 @@
-# Create-release upon closing a pull request: testing Bot
+# Create-release upon closing a pull request: 
 
 When user specified conditions are met:  
 
