@@ -18,7 +18,7 @@ jobs:
       # - name: Python Action
       #   uses: jge162/Action-workflows@2.1.0
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Get latest tag
         run: |
@@ -68,7 +68,7 @@ jobs:
 
     steps:
       - name: Action
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
  
         with:
           ref: main
